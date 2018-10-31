@@ -16,7 +16,7 @@ class IsCustomer
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user() &&  Auth::user()->role_id == 3) {
+        if (Auth::user() &&  Auth::user()->role_id == config('auth.roles.customer')) {
             return $next($request);
         }
         abort(403);
