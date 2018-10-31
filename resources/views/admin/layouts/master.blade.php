@@ -32,45 +32,42 @@
     <link rel="shortcut icon" href="assets/img/favicon.ico" /> 
  </head>
  <!-- END HEAD -->
-<body>
-<div class="page-wrapper">
-    <!-- start header -->
-    <div class="page-header navbar navbar-fixed-top">
-        @yield('header')
-    </div>
-    <!-- end header -->
-    <div class="clearfix"> </div>
-    <!-- start page container -->
-    <div class="page-container">
-        <!-- start sidebar menu-->
-        <div class="sidebar-container">
-            <div class="sidemenu-container navbar-collapse collapse fixed-menu">
-                @yield('sidebar')
-                
-            </div>
+<body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
+    <div class="page-wrapper">
+        @include('admin/elements/header')
+        <!-- start page container -->
+        <div class="page-container">
+ 			@include('admin/elements/sidebar')
+			
+			@yield('content')
+
+            @include('admin/elements/chatsitebar')
         </div>
-        <!-- end sidebar menu -->
-        <!-- start page content -->
-        <div class="page-content-wrapper">
-             <div class="page-content">
-                @yield('content')
-            </div>
-        </div>
-        <!-- end page content -->
-        <!-- start chat sidebar -->
-        <div class="chat-sidebar-container" data-close-on-body-click="false">
-            <div class="chat-sidebar">
-               @yield('chat')
-            </div>
-        </div>
-        <!-- end chat sidebar -->
+        <!-- end page container -->
+        
+        @include('admin/elements/footer')
     </div>
-    <!-- end page container -->
-    <!-- start footer -->
-    <div class="page-footer">
-        @yield('footer')
-    </div>
-    <!-- end footer -->
-</div>
-</body>
+    <!-- start js include path -->
+    <script src="assets/plugins/jquery/jquery.min.js" ></script>
+    <script src="assets/plugins/popper/popper.min.js" ></script>
+    <script src="assets/plugins/jquery-blockui/jquery.blockui.min.js" ></script>
+	<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <!-- bootstrap -->
+    <script src="assets/plugins/bootstrap/js/bootstrap.min.js" ></script>
+    <script src="assets/plugins/sparkline/jquery.sparkline.min.js" ></script>
+	<script src="assets/js/pages/sparkline/sparkline-data.js" ></script>
+    <!-- Common js-->
+	<script src="assets/js/app.js" ></script>
+    <script src="assets/js/layout.js" ></script>
+    <script src="assets/js/theme-color.js" ></script>
+    <!-- material -->
+    <script src="assets/plugins/material/material.min.js"></script>
+    <!-- animation -->
+    <script src="assets/js/pages/ui/animations.js" ></script>
+    <!-- morris chart -->
+    <script src="assets/plugins/morris/morris.min.js" ></script>
+    <script src="assets/plugins/morris/raphael-min.js" ></script>
+    <script src="assets/js/pages/chart/morris/morris_home_data.js" ></script>
+    <!-- end js include path -->
+  </body>
 </html>
