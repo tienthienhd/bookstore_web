@@ -99,4 +99,11 @@ return [
         ],
     ],
 
+    'roles' => [
+        'locked' => 1,
+        'admin' => 2,
+        'customer' => 3,
+        'sale-manager' => 4,
+    ],
+
 ];

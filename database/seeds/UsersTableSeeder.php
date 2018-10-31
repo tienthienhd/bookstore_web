@@ -24,7 +24,7 @@ class UsersTableSeeder extends Seeder
 	        	'created_at' => \Carbon\Carbon::now()->toDateTimeString(), 
 	        	'updated_at' => \Carbon\Carbon::now()->toDateTimeString(), 
 	        	'avatar' => 'admin.png', 
-	        	'role_id'=>1
+	        	'role_id'=> config('auth.roles.admin')
 	        ], 
 	 
 			[
@@ -37,8 +37,8 @@ class UsersTableSeeder extends Seeder
 	        	'remember_token' => str_random(10),  
 	        	'created_at' => \Carbon\Carbon::now()->toDateTimeString(), 
 	        	'updated_at' => \Carbon\Carbon::now()->toDateTimeString(), 
-	        	'avatar' => 'sale_manage.png', 
-	        	'role_id'=>2
+	        	'avatar' => 'sale_manager.png',
+	        	'role_id' => config('auth.roles.sale-manager')
 	        ], 
 
 	        [
@@ -52,7 +52,7 @@ class UsersTableSeeder extends Seeder
 	        	'created_at' => \Carbon\Carbon::now()->toDateTimeString(), 
 	        	'updated_at' => \Carbon\Carbon::now()->toDateTimeString(), 
 	        	'avatar' => 'customer.png', 
-	        	'role_id'=>3
+	        	'role_id'=> config('auth.roles.customer')
 	        ],  
 		]);
     }
