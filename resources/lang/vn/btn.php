@@ -16,6 +16,8 @@ return [
 	'upload-cover' => 'Tải lên ảnh bìa sách',
 	'search' => 'Tìm kiếm',
 	'refine' => 'Lọc',
+	'add-to-card' => 'Thêm vào giỏ',
+	'comment-detail' => 'Chi tiết đánh giá',
 ];
 
 ?>
