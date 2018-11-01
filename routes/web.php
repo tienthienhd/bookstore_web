@@ -11,21 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@welcome')->name('welcome')->middleware('guest');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('customer');
+Route::get('/admin/home', 'HomeController@adminHome')->name('admin.home')->middleware('admin');
+Route::get('/manager/home', 'HomeController@managerHome')->name('manager.home')->middleware('manager');
+Route::get('/locked', 'HomeController@locked')->name('locked')->middleware('locked');
 
-Route::group(['prefix' => 'manager/book', 'middleware' => ['web', 'auth']], function(){
+Route::group(['prefix' => 'manager/book', 'middleware' => ['web', 'auth', 'manager']], function(){
 	Route::get('/', 'BookController@getBookListManage')->name('manager.book.index');
 	Route::get('/add', 'BookController@showAddBookForm')->name('manager.book.create');
 	Route::post('/', 'BookController@addNewBook')->name('manager.book.store');
 	Route::post('/add-quantity', 'BookController@addOldBook')->name('manager.book.add-quantity');
-	Route::get('/{book}', 'BookController@getBookDetail')->name('book.show');
+	Route::get('/{book}', 'BookController@getBookDetailManage')->name('manager.book.show');
 	Route::get('/{book}/edit', 'BookController@showEditBookForm')->name('manager.book.edit');
 	Route::put('/{book}', 'BookController@updateBook')->name('manager.book.update');
 	Route::put('/{book}/stop-sale', 'BookController@stopSaleBook')->name('manager.book.update.off-state');
 });
+
+Route::get('/book/{book}', 'BookController@getBookDetail')->name('book.show')
+->middleware(['not-admin', 'not-manager', 'not-locked']);

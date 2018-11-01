@@ -143,6 +143,7 @@ return [
 
     'attributes' => [
         'book' => [
+            'id' => 'ID',
             'title' => 'Title',
             'author' => 'Author',
             'category' => 'Category',
@@ -155,6 +156,7 @@ return [
             'addQuantity' => 'Add quantity',
         ],
         'user' => [
+            'id' => 'ID',
             'username' => 'Username',
             'fullname' => 'Full name',
             'email' => 'Email',
