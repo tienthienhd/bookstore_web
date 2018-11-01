@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\BookController;
+use App\Http\Requests\SearchFilterBookRequest;
 
 class HomeController extends Controller
 {
@@ -24,10 +25,14 @@ class HomeController extends Controller
     }
 
     /**
-     *
-     * @return \Illuminate\Http\Response
+     * 
+     * @param  SearchFilterBookRequest $request 
+     * @return \Illuminate\Http\Response                           
      */
-    public function welcome(Request $request){
+    public function welcome(SearchFilterBookRequest $request){
+        //  Validate the data
+        $valid = $request->validated();
+
         $searchString = $request->searchString;
         $refineCategory = $request->refineCategory;
         if($searchString != ''){
@@ -45,13 +50,28 @@ class HomeController extends Controller
     }
 
     /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
+     * 
+     * @param  SearchFilterBookRequest $request 
+     * @return \Illuminate\Http\Response                           
      */
-    public function index()
-    {
-        return view('home');
+    public function index(SearchFilterBookRequest $request){
+        //  Validate the data
+        $valid = $request->validated();
+
+        $searchString = $request->searchString;
+        $refineCategory = $request->refineCategory;
+        if($searchString != ''){
+            $books = $this->bookController->searchBook($searchString);
+        }elseif($refineCategory != ''){
+            $books = $this->bookController->getListBooksByCategory($refineCategory);
+        }else{
+            $books = $this->bookController->getListBooksForHomePage();
+        }
+        return view('home', [
+            'books' => $books, 
+            'refineCategory' => $refineCategory,
+            'searchString' => $searchString,
+        ]);
     }
 
     /**
