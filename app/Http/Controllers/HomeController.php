@@ -3,17 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\BookController;
 
 class HomeController extends Controller
 {
     /**
-     * Create a new controller instance.
      *
-     * @return void
+     * @var BookController
      */
-    public function __construct()
+    private $bookController;
+
+    /**
+     * 
+     * @param BookController $bookController 
+     */
+    public function __construct(BookController $bookController)
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('welcome');
+        $this->bookController = $bookController;
+    }
+
+    /**
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function welcome(Request $request){
+        $searchString = $request->searchString;
+        $refineCategory = $request->refineCategory;
+        if($searchString != ''){
+            $books = $this->bookController->searchBook($searchString);
+        }elseif($refineCategory != ''){
+            $books = $this->bookController->getListBooksByCategory($refineCategory);
+        }else{
+            $books = $this->bookController->getListBooksForHomePage();
+        }
+        return view('welcome', [
+            'books' => $books, 
+            'refineCategory' => $refineCategory,
+            'searchString' => $searchString,
+        ]);
     }
 
     /**

@@ -15,6 +15,7 @@ return [
 	'sale-again' => 'Kinh doanh trở lại',
 	'upload-cover' => 'Tải lên ảnh bìa sách',
 	'search' => 'Tìm kiếm',
+	'refine' => 'Lọc',
 ];
 
 ?>

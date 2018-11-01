@@ -15,6 +15,7 @@ return [
 	'sale-again' => 'Sale Book Again',
 	'upload-cover' => 'Upload A Cover Picture',
 	'search' => 'Search',
+	'refine' => 'Refine',
 ];
 
 ?>

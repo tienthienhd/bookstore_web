@@ -80,18 +80,36 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    Laravel
-                </div>
+                <form action="{{route('welcome')}}" method="get">
+                    {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
+                    <input type="text" name="searchString" value="{{ old('searchString') ?? $searchString ??''}}"><br>
+                    
+                    <input type="submit" name="search" value="{{__('btn.search')}}">
+                </form>
 
-                <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                <form action="{{route('welcome')}}" method="get">
+                    {{__('word-and-statement.refine-by-category')}}:
+                    <select name='refineCategory'>
+                        <option value="">{{__('messages.select-a-category')}}</option>
+                        @foreach ( config('book-category') as $category)
+                            <option value="{{$category}}" {{ old('refineCategory') == $category || (isset($refineCategory) && $refineCategory == $category) ? 'selected' : ''}}>
+                                {{__('book-category.'.$category)}}
+                            </option>
+                        @endforeach
+                    </select><br>
+                    <input type="submit" name="refine" value="{{__('btn.refine')}}">
+                </form>
+                @if(isset($books))
+                    @foreach($books as $book)
+                        <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
+                        {{$book->author}}
+                        {{__('book-category.'.$book->category)}}
+                        {{$book->saleprice}}<br>
+                    @endforeach
+                    {{$books->links()}}
+                @else
+                    {{__('messages.no-book-found')}}
+                @endif
             </div>
         </div>
     </body>
