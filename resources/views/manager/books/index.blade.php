@@ -73,7 +73,7 @@
 							<td>{{$book->saleprice}}</td>
 							<td>{{$book->purchase_price}}</td>
 							<td>{{($book->state < 0) ? '--' : $book->state}}</td>
-							<td><a href="{{route('manager.book.show',['bookId' => $book->id])}}">{{__('btn.detail')}}</a></td>
+							<td><a href="{{route('book.show',['bookId' => $book->id])}}">{{__('btn.detail')}}</a></td>
 						</tr>
 			    	@endforeach
 	    		</tbody>
