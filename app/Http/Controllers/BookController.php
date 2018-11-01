@@ -12,34 +12,33 @@ use DateTime;
 class BookController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 
+     * @return mix
      */
     public function getListBooksForHomePage()
     {
-        //  Todo
         $books = Book::orderBy('created_at', 'ASC')->paginate();
-        return view('home', ['books' => $books]);
+        return $books;
     }
 
     /**
-     * @param $category
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param String $category
+     * @return mix
      */
     public function getListBooksByCategory($category){
-        //  Todo
-        $books = Book::where('category', $category)->sortBy('created_at')->paginate();
-        return view('home', ['books' => $books]);
+        $books = Book::where('category', $category)->orderBy('created_at')->paginate();
+        return $books;
     }
 
     /**
-     * @param Request $request
+     * @param String $searchString
+     * @return  mix
      */
-    public function searchBook(Request $request){
-        // Todo
-        //$books = Book::where($request);
-        //return view('home', ['books' => $books]);
+    public function searchBook($searchString){
+        $books = Book::where('title', 'like', '%' . $searchString . '%')
+        ->orWhere('author', 'like', '%' . $searchString . '%')
+        ->paginate();
+        return $books;
     }
 
     /**
