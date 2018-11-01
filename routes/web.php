@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('/', 'HomeController@welcome')->name('welcome')->middleware('guest');
 
 Auth::routes();
 
@@ -25,8 +25,11 @@ Route::group(['prefix' => 'manager/book', 'middleware' => ['web', 'auth', 'manag
 	Route::get('/add', 'BookController@showAddBookForm')->name('manager.book.create');
 	Route::post('/', 'BookController@addNewBook')->name('manager.book.store');
 	Route::post('/add-quantity', 'BookController@addOldBook')->name('manager.book.add-quantity');
-	Route::get('/{book}', 'BookController@getBookDetail')->name('book.show');
+	Route::get('/{book}', 'BookController@getBookDetailManage')->name('manager.book.show');
 	Route::get('/{book}/edit', 'BookController@showEditBookForm')->name('manager.book.edit');
 	Route::put('/{book}', 'BookController@updateBook')->name('manager.book.update');
 	Route::put('/{book}/stop-sale', 'BookController@stopSaleBook')->name('manager.book.update.off-state');
 });
+
+Route::get('/book/{book}', 'BookController@getBookDetail')->name('book.show')
+->middleware(['not-admin', 'not-manager', 'not-locked']);
