@@ -14,7 +14,11 @@
                         </div>
                     @endif
 
-                    You are logged in as manager!
+                    You are logged in as sale manager!
+
+                    <a href="{{route('manager.book.index')}}">{{__('btn.book-manage')}}</a>
+                    <a href="#">{{__('btn.order-manage')}}</a>
+                    <a href="#">{{__('btn.report-manage')}}</a>
                 </div>
             </div>
         </div>
