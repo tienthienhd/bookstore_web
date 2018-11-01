@@ -16,8 +16,6 @@ return [
 	'upload-cover' => 'Upload A Cover Picture',
 	'search' => 'Search',
 	'refine' => 'Refine',
-	'add-to-card' => 'Add to card',
-	'comment-detail' => 'Comment detail',
 ];
 
 ?>
