@@ -13,23 +13,30 @@ class RolesTableSeeder extends Seeder
     {
         DB::table('roles')->truncate();
         DB::table('roles')->insert([
-        	[
-        		'id' => 1, 
-        		'title' => 'Admin',
-	        	'description' => 'Quản trị hệ thống'
-	        ], 
-	 
-			[
-        		'id' => 2, 
-        		'title' => 'Sale Manage',
-	        	'description' => 'Quản lý bán hàng'
-	        ], 
 
-	        [
-        		'id' => 3, 
-        		'title' => 'Customer',
-	        	'description' => 'Khách hàng'
-	        ],  
-		]);
+            [
+                'id' => config('auth.roles.locked'), 
+                'title' => 'Locked Account',
+                'description' => 'Tài khoản bị khóa'
+            ],
+
+            [
+                'id' => config('auth.roles.admin'), 
+                'title' => 'Admin',
+                'description' => 'Quản trị hệ thống'
+            ], 
+     
+            [
+                'id' => config('auth.roles.sale-manager'), 
+                'title' => 'Sale Manage',
+                'description' => 'Quản lý bán hàng'
+            ], 
+
+            [
+                'id' => config('auth.roles.customer'), 
+                'title' => 'Customer',
+                'description' => 'Khách hàng'
+            ],  
+        ]);
     }
 }

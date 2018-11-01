@@ -69,7 +69,7 @@ class RegisterController extends Controller
             'phone' => $data['phone'],
             'avatar' => 'default_avatar.png',
             'address' => $data['address'],
-            'role_id' => 3
+            'role_id' => config('auth.roles.customer')
         ]);
     }
 }

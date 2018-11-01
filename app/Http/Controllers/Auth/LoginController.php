@@ -46,4 +46,27 @@ class LoginController extends Controller
     {
         return 'username';
     }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @return mixed
+     */
+    protected function authenticated()
+    {
+        $user = auth()->user();
+        if ( $user->role_id == config('auth.roles.locked')) {
+            return redirect()->route('locked');
+        }
+
+        if ( $user->role_id == config('auth.roles.admin')){
+            return redirect()->route('admin.home');
+        }
+
+        if ( $user->role_id == config('auth.roles.customer')){
+            return redirect()->route('home');
+        }
+
+        return redirect()->route('manager.home');
+    }
 }

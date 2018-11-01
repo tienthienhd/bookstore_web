@@ -25,4 +25,34 @@ class HomeController extends Controller
     {
         return view('home');
     }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function adminHome()
+    {
+        return view('admin.home');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function managerHome()
+    {
+        return view('manager.home');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function locked()
+    {
+        return view('locked');
+    }
 }
