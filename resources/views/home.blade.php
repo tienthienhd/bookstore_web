@@ -13,7 +13,9 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
+                @auth
+                    <a href="{{route('cart.index')}}">Cart</a>
+                @endauth
                 <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
                     <input type="text" name="searchString" value="{{ old('searchString') ?? $searchString ??''}}"><br>

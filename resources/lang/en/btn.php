@@ -18,6 +18,8 @@ return [
 	'refine' => 'Refine',
 	'add-to-card' => 'Add to card',
 	'comment-detail' => 'Comment detail',
+	'delete' => 'Delete',
+	'add-order' => 'Order',
 ];
 
 ?>

@@ -8,5 +8,10 @@ return [
 	're-stop-sale-book-successfully' => 'Đầu sách có mã định danh: :id đã được cập nhật trạng thái thành kinh doanh trở lại!',
 	'select-a-category' => 'Chọn một thể loại sách',
 	'no-book-found' => 'Không có cuốn sách nào',
+	'over-quantity' => 'Vượt quá số lượng sách còn trong kho, chúng tôi chỉ còn :quantity cuốn!',
+	'add-to-cart-successfully' => 'Thêm sách vào giỏ thành công!',
+	'blank-cart' => 'Giỏ hàng trống!',
+	'update-cart-quantity-successfully' => 'Cập nhật số lượng cuốn :title trong giỏ thành công!',
+	'delete-cart-successfully' => 'Xóa cuốn sách :title khỏi giỏ hàng thành công!',
 ];
 ?>

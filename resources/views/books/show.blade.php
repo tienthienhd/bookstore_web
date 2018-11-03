@@ -9,7 +9,16 @@
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
-    @endif	
+    @endif
+    @if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif	
 	@if(isset($book))
 		{{$book->title}}
 		{{$book->author}}
@@ -18,8 +27,13 @@
 		{{$book->description}}
 		{{$book->saleprice}}
 		{{$star}}
-		<a href="#">{{__('btn.add-to-card')}}</a>
 		<a href="#">{{__('btn.comment-detail')}}</a>
+		<form action="{{route('cart.add')}}" method="post">
+			@csrf
+			<input type="hidden" name="bookId" value="{{$book->id}}">
+			<input type="hidden" name="quantity" value="1">
+			<input type="submit" name="addToCart" value="{{__('btn.add-to-card')}}">	
+		</form>
 	@endif
 </body>
 </html>
