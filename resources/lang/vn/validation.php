@@ -163,6 +163,11 @@ return [
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ'
         ],
+        'cart' => [
+            'tittle' => 'Tên sách',
+            'price' => 'Giá',
+            'quantity' => 'Số lượng',
+        ],
     ],
 ];
 ?>

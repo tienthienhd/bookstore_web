@@ -165,6 +165,11 @@ return [
             'phone' => 'Phone number',
             'address' => 'Address'
         ],
+        'cart' => [
+            'tittle' => 'Book title',
+            'price' => 'Price',
+            'quantity' => 'Quantity',
+        ],
     ],
 
 ];
