@@ -42,7 +42,7 @@ class HomeController extends Controller
         }else{
             $books = $this->bookController->getListBooksForHomePage();
         }
-        return view('welcome', [
+        return view('home', [
             'books' => $books, 
             'refineCategory' => $refineCategory,
             'searchString' => $searchString,
@@ -55,23 +55,7 @@ class HomeController extends Controller
      * @return \Illuminate\Http\Response                           
      */
     public function index(SearchFilterBookRequest $request){
-        //  Validate the data
-        $valid = $request->validated();
-
-        $searchString = $request->searchString;
-        $refineCategory = $request->refineCategory;
-        if($searchString != ''){
-            $books = $this->bookController->searchBook($searchString);
-        }elseif($refineCategory != ''){
-            $books = $this->bookController->getListBooksByCategory($refineCategory);
-        }else{
-            $books = $this->bookController->getListBooksForHomePage();
-        }
-        return view('home', [
-            'books' => $books, 
-            'refineCategory' => $refineCategory,
-            'searchString' => $searchString,
-        ]);
+        return $this->welcome($request);
     }
 
     /**

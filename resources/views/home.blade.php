@@ -14,14 +14,14 @@
                         </div>
                     @endif
 
-                <form action="{{route('home')}}" method="get">
+                <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
                     <input type="text" name="searchString" value="{{ old('searchString') ?? $searchString ??''}}"><br>
                     
                     <input type="submit" name="search" value="{{__('btn.search')}}">
                 </form>
 
-                <form action="{{route('home')}}" method="get">
+                <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('word-and-statement.refine-by-category')}}:
                     <select name='refineCategory'>
                         <option value="">{{__('messages.select-a-category')}}</option>
