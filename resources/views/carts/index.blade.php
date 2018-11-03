@@ -36,7 +36,7 @@
 		    		@method('put')
 		    		<img src="{{asset('img/covers/'.$cart->book->cover)}}" style="width: 10%">
 		    		{{__('validation.attributes.cart.tittle')}}:{{$cart->book->title}}
-		    		{{__('validation.attributes.cart.price')}}:{{$cart->book->saleprice}}
+		    		{{__('validation.attributes.cart.price')}}:{{__('word-and-statement.price', ['price' => number_format($cart->book->saleprice, 0, '.', '.')])}}
 		    		{{__('validation.attributes.cart.quantity')}}:
 		    		<input type="number" name="quantity" id='quantity{{$cart->id}}' value="{{$cart->quantity}}" onfocusout="myFunction({{$cart->id}})">
 		    		<input type="button" name="minusOne" value="-" onclick="myMinusFunction({{$cart->id}})">
@@ -65,7 +65,14 @@
 		    		<input type="submit" name="delete" value="{{__('btn.delete')}}">
 		    	</form>
 	    	@endforeach
-	    	<a href="{{route('order.add')}}">{{__('btn.add-order')}}</a>
+	    	<form action="{{route('order.add')}}" method="post">
+	    		@csrf
+	    		<input type="hidden" name="total">
+	    		<select name="delivery">
+	    			
+	    		</select>
+	    		<input type="submit" name="addOrder" value="{{__('btn.add-order')}}">
+	    	</form>
 	    @else
 	    	{{__('messages.blank-cart')}}
 	    @endif	

@@ -40,7 +40,7 @@
                         <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
                         {{$book->author}}
                         {{__('book-category.'.$book->category)}}
-                        {{$book->saleprice}}<br>
+                        {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}<br>
                     @endforeach
                     {{$books->links()}}
                 @else

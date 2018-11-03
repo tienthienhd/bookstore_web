@@ -70,8 +70,8 @@
 							<td>{{$book->title}}</td>
 							<td>{{$book->author}}</td>
 							<td>{{__('book-category.'.$book->category)}}</td>
-							<td>{{$book->saleprice}}</td>
-							<td>{{$book->purchase_price}}</td>
+							<td>{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}</td>
+							<td>{{__('word-and-statement.price', ['price' => number_format($book->purchase_price, 0, '.', '.')])}}</td>
 							<td>{{($book->state < 0) ? '--' : $book->state}}</td>
 							<td><a href="{{route('manager.book.show',['bookId' => $book->id])}}">{{__('btn.detail')}}</a></td>
 						</tr>
