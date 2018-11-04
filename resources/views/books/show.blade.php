@@ -9,22 +9,31 @@
         <div class="alert alert-success" role="alert">
             {{ session('status') }}
         </div>
-    @endif	
+    @endif
+    @if ($errors->any())
+	    <div class="alert alert-danger">
+	        <ul>
+	            @foreach ($errors->all() as $error)
+	                <li>{{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    </div>
+	@endif	
 	@if(isset($book))
-		{{$book->title}}<br>
-		{{$book->author}}<br>
-		{{__('book-category.'.$book->category)}}<br>
-		{{$book->cover}}<br>
-		{{$book->description}}<br>
-		{{$book->saleprice}}<br>
-		{{$star}}<br>
-		
-
-
-		<a href="#">{{__('btn.add-to-card')}}</a><br>
-
-
 		<a href="{{route('book.comment',['bookId' => $book->id])}}">{{__('btn.comment-detail')}}</a><br>
+		{{$book->title}}
+		{{$book->author}}
+		{{__('book-category.'.$book->category)}}
+		{{$book->cover}}
+		{{$book->description}}
+		{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
+		{{$star}}
+		<form action="{{route('cart.add')}}" method="post">
+			@csrf
+			<input type="hidden" name="bookId" value="{{$book->id}}">
+			<input type="hidden" name="quantity" value="1">
+			<input type="submit" name="addToCart" value="{{__('btn.add-to-card')}}">	
+		</form>
 	@endif
 </body>
 </html>

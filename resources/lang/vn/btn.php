@@ -19,7 +19,10 @@ return [
 	'add-to-card' => 'Thêm vào giỏ',
 	'comment-detail' => 'Chi tiết đánh giá',
 	'delete' => 'Xóa',
-	'add-comment' => 'Thêm comment'
+	'add-comment' => 'Thêm comment',
+	'add-order' => 'Đặt hàng',
+	'cart' => 'Giỏ hàng',
+	'order-history' => 'Lịch sử mua hàng',
 ];
 
 ?>

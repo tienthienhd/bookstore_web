@@ -24,6 +24,9 @@ class RedirectIfAuthenticated
             if (Auth::user() &&  Auth::user()->role_id == config('auth.roles.customer')) {
                 return redirect()->route('home');
             }
+            if (Auth::user() &&  Auth::user()->role_id == config('auth.roles.locked')) {
+                return redirect()->route('locked');
+            }
             return redirect()->route('manager.home');
         }
 

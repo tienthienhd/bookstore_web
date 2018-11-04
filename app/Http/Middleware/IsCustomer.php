@@ -19,6 +19,6 @@ class IsCustomer
         if (Auth::user() &&  Auth::user()->role_id == config('auth.roles.customer')) {
             return $next($request);
         }
-        //abort(403);
+        abort(403);
     }
 }

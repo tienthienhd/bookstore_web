@@ -9,7 +9,6 @@ return [
 	'order-manage' => 'Order Manage',
 	'report-manage' => 'Report',
 	'add-book' => 'Add Book',
-	'add-comment' => 'Add Comment'
 	'detail' => 'Detail',
 	'edit' => 'Edit',
 	'stop-sale' => 'Stop Sale Book',
@@ -19,6 +18,11 @@ return [
 	'refine' => 'Refine',
 	'add-to-card' => 'Add to card',
 	'comment-detail' => 'Comment detail',
+	'delete' => 'Delete',
+	'add-comment' => 'Add comment',
+	'add-order' => 'Order',
+	'cart' => 'Cart',
+	'order-history' => 'Order History',
 ];
 
 ?>

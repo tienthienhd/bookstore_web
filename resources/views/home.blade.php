@@ -14,15 +14,18 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                <form action="{{route('home')}}" method="get">
+                @auth
+                    <a href="{{route('cart.index')}}">{{__('btn.cart')}}</a>
+                    <a href="{{route('order.index')}}">{{__('btn.order-history')}}</a>
+                @endauth
+                <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
                     <input type="text" name="searchString" value="{{ old('searchString') ?? $searchString ??''}}"><br>
                     
                     <input type="submit" name="search" value="{{__('btn.search')}}">
                 </form>
 
-                <form action="{{route('home')}}" method="get">
+                <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('word-and-statement.refine-by-category')}}:
                     <select name='refineCategory'>
                         <option value="">{{__('messages.select-a-category')}}</option>
@@ -39,7 +42,7 @@
                         <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
                         {{$book->author}}
                         {{__('book-category.'.$book->category)}}
-                        {{$book->saleprice}}<br>
+                        {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}<br>
                     @endforeach
                     {{$books->links()}}
                 @else
