@@ -19,7 +19,10 @@ return [
 	'add-to-card' => 'Add to card',
 	'comment-detail' => 'Comment detail',
 	'delete' => 'Delete',
+	'add-comment' => 'Add comment',
 	'add-order' => 'Order',
+	'cart' => 'Cart',
+	'order-history' => 'Order History',
 ];
 
 ?>

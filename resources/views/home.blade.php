@@ -6,7 +6,8 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
-
+                <a href="{{route('customer.waitcommentlist')}}" title=""> {{__('word-and-statement.wait-comment')}} </a>
+                <a href="{{route('customer.comment.index')}}" title=""> {{__('word-and-statement.list-comment')}} </a>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
@@ -14,7 +15,8 @@
                         </div>
                     @endif
                 @auth
-                    <a href="{{route('cart.index')}}">Cart</a>
+                    <a href="{{route('cart.index')}}">{{__('btn.cart')}}</a>
+                    <a href="{{route('order.index')}}">{{__('btn.order-history')}}</a>
                 @endauth
                 <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
@@ -40,7 +42,7 @@
                         <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
                         {{$book->author}}
                         {{__('book-category.'.$book->category)}}
-                        {{$book->saleprice}}<br>
+                        {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}<br>
                     @endforeach
                     {{$books->links()}}
                 @else

@@ -163,10 +163,21 @@ return [
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ'
         ],
+         'comment' => [
+            'id' => 'Mã định danh',
+            'book_id' => 'Mã sách',
+            'user_id' => 'Mã khách hàng',
+            'title' => 'Tiêu đề đánh giá',
+            'description' => 'Nội dung đánh giá',
+            'star' => 'Số sao',   
+        ],
         'cart' => [
             'tittle' => 'Tên sách',
             'price' => 'Giá',
             'quantity' => 'Số lượng',
+        ],
+        'order' => [
+            'delivery' => 'Hình thức giao hàng',
         ],
     ],
 ];

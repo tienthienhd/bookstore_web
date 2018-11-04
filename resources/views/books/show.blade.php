@@ -20,14 +20,14 @@
 	    </div>
 	@endif	
 	@if(isset($book))
+		<a href="{{route('book.comment',['bookId' => $book->id])}}">{{__('btn.comment-detail')}}</a><br>
 		{{$book->title}}
 		{{$book->author}}
 		{{__('book-category.'.$book->category)}}
 		{{$book->cover}}
 		{{$book->description}}
-		{{$book->saleprice}}
+		{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
 		{{$star}}
-		<a href="#">{{__('btn.comment-detail')}}</a>
 		<form action="{{route('cart.add')}}" method="post">
 			@csrf
 			<input type="hidden" name="bookId" value="{{$book->id}}">

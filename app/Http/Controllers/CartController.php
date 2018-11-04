@@ -34,7 +34,7 @@ class CartController extends Controller
         $book = Book::find($bookId);
         if($book->state < $cart->quantity){
             return redirect()->back()->withErrors([
-                'over-quantity'=> __('messages.over-quantity', ['quantity' => $book->state])
+                'over-quantity'=> __('messages.over-quantity', ['quantity' => $book->state, 'title' => $book->title])
             ]);
         }
 
@@ -51,7 +51,11 @@ class CartController extends Controller
     {
         $userId = Auth::user()->id;
         $carts = Cart::where('user_id', $userId)->get();
-        return view('carts.index', ['carts' => $carts]);
+        $multiplications = [];
+        foreach ($carts as $cart) {
+            $multiplications[$cart->id] = $cart->quantity * $cart->book->saleprice;
+        }
+        return view('carts.index', ['carts' => $carts, 'multiplications' => $multiplications]);
     }
 
     /**
@@ -66,7 +70,7 @@ class CartController extends Controller
         $cart->quantity = $request->quantity;
         if($cart->book->state < $cart->quantity){
             return redirect()->back()->withErrors([
-                'over-quantity'=> __('messages.over-quantity', ['quantity' => $cart->book->state])
+                'over-quantity'=> __('messages.over-quantity', ['quantity' => $cart->book->state, 'title' => $cart->book->title])
             ]);
         }
         $cart->save();
@@ -87,10 +91,13 @@ class CartController extends Controller
     }
 
     public function clearCart(){
-
+        $userId = Auth::user()->id;
+        Cart::where('user_id', $userId)->delete();
     }
 
     public function getCart(){
-
+        $userId = Auth::user()->id;
+        return Cart::where('user_id', $userId)->get();
     }
+
 }

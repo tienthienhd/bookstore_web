@@ -36,7 +36,7 @@
 		    		@method('put')
 		    		<img src="{{asset('img/covers/'.$cart->book->cover)}}" style="width: 10%">
 		    		{{__('validation.attributes.cart.tittle')}}:{{$cart->book->title}}
-		    		{{__('validation.attributes.cart.price')}}:{{$cart->book->saleprice}}
+		    		{{__('validation.attributes.cart.price')}}:{{__('word-and-statement.price', ['price' => number_format($cart->book->saleprice, 0, '.', '.')])}}
 		    		{{__('validation.attributes.cart.quantity')}}:
 		    		<input type="number" name="quantity" id='quantity{{$cart->id}}' value="{{$cart->quantity}}" onfocusout="myFunction({{$cart->id}})">
 		    		<input type="button" name="minusOne" value="-" onclick="myMinusFunction({{$cart->id}})">
@@ -65,7 +65,98 @@
 		    		<input type="submit" name="delete" value="{{__('btn.delete')}}">
 		    	</form>
 	    	@endforeach
-	    	<a href="{{route('order.add')}}">{{__('btn.add-order')}}</a>
+	    	{{__('word-and-statement.provisional-order')}}
+	    	<form action="{{route('order.add')}}" method="post" id="orderForm">
+	    		@csrf
+	    		<input type="hidden" name="total" id='postTotal'>
+		    	<table>
+		    		<thead>
+		    			<tr>
+		    				<th>{{__('word-and-statement.order.item')}}</th>
+		    				<th>{{__('word-and-statement.order.price')}}</th>
+		    				<th>{{__('word-and-statement.order.quantity')}}</th>
+		    				<th>{{__('word-and-statement.order.multiplication')}}</th>
+		    			</tr>
+		    		</thead>
+		    		<tbody>
+		    			@foreach($carts as $cart)
+		    			<tr>
+		    				<td>{{$cart->book->title}}</td>
+		    				<td>{{__('word-and-statement.price', ['price' => number_format($cart->book->saleprice, 0, '.', '.')])}}</td>
+		    				<td>{{$cart->quantity}}</td>
+		    				<td>{{__('word-and-statement.price', ['price' => number_format($multiplications[$cart->id], 0, '.', '.')])}}</td>
+		    			</tr>
+		    			@endforeach
+		    			<tr>
+		    				<td colspan="3">
+		    					<select name="delivery" id="delivery" onchange="reTotal({{array_sum($multiplications)}});">
+		    						<option value="">{{__('messages.select-a-delivery')}}</option>
+					    			@foreach(config('delivery.types') as $delivery => $value)
+					    				<option value="{{$value}}" {{ old('delivery') == $value ? 'selected' : '' }}>
+											{{__('delivery.'.$delivery)}} - {{__('word-and-statement.price', ['price' => number_format(config('delivery.fees.'.$delivery), 0, '.', '.')])}}
+										</option>
+							    	@endforeach
+					    		</select>
+		    				</td>
+		    				<td id="deliveryFees">
+		    					--
+		    				</td>
+		    			</tr>
+		    			<tr>
+		    				<td colspan="2">
+		    					{{__('word-and-statement.order.total')}}
+		    				</td>
+		    				<td id="totalItem">
+		    					{{$carts->sum('quantity')}}
+		    				</td>
+		    				<td id="total">
+		    					{{__('word-and-statement.price', ['price' => number_format(array_sum($multiplications), 0, '.', '.')])}}
+		    				</td>
+		    			</tr>
+		    		</tbody>
+		    	</table>
+		    	<script>
+		    		function reTotal(total){
+		    			var x = total;
+		    			var y = document.getElementById('delivery');
+			    		var z = y.options[y.selectedIndex].innerHTML;
+			    		z = z.match(/\d/g);
+		    			if (z===null){
+		    				document.getElementById('deliveryFees').innerHTML = "--";
+		    				z = 0;
+		    			}else{
+			    			z = z.join("");
+			    			u = z.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+			    			v = document.getElementById('total').innerHTML.split("");
+			    			if(v.indexOf('đ')!= -1){
+			    				document.getElementById('deliveryFees').innerHTML = u+' đ';
+			    			}else{
+			    				document.getElementById('deliveryFees').innerHTML ='VND ' + u;
+			    			}
+			    		}
+		    			var t = parseInt(x) + parseInt(z);
+		    			t = t.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+		    			x = document.getElementById('total').innerHTML.split("");
+		    			if(x.indexOf('đ')!= -1){
+		    				document.getElementById('total').innerHTML = t+' đ';
+		    			}else{
+		    				document.getElementById('total').innerHTML ='VND ' + t;
+		    			}
+		    			
+		    		}
+		    	</script>
+	    	<input type="button" name="addOrder" value="{{__('btn.add-order')}}" onclick="mySubmitFunction()">
+	    	</form>
+	    	<script>
+	    		function mySubmitFunction(){
+	    			var x = document.getElementById('total').innerHTML;
+	    			x = x.match(/\d/g);
+	    			x = x.join("");
+	    			document.getElementById('postTotal').value = parseInt(x);
+	    			console.log(x);
+	    			document.getElementById('orderForm').submit();
+	    		}
+	    	</script>
 	    @else
 	    	{{__('messages.blank-cart')}}
 	    @endif	
