@@ -34,7 +34,7 @@ class CartController extends Controller
         $book = Book::find($bookId);
         if($book->state < $cart->quantity){
             return redirect()->back()->withErrors([
-                'over-quantity'=> __('messages.over-quantity', ['quantity' => $book->state])
+                'over-quantity'=> __('messages.over-quantity', ['quantity' => $book->state, 'title' => $book->title])
             ]);
         }
 
@@ -70,7 +70,7 @@ class CartController extends Controller
         $cart->quantity = $request->quantity;
         if($cart->book->state < $cart->quantity){
             return redirect()->back()->withErrors([
-                'over-quantity'=> __('messages.over-quantity', ['quantity' => $cart->book->state])
+                'over-quantity'=> __('messages.over-quantity', ['quantity' => $cart->book->state, 'title' => $cart->book->title])
             ]);
         }
         $cart->save();

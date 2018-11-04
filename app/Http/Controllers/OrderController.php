@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Order;
+use App\Models\Book;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Auth;
@@ -23,6 +24,27 @@ class OrderController extends Controller
         //  Validate the data
         $valid = $request->validated();
 
+        //	Check book quantity
+        $cartController = new CartController;
+        $carts = $cartController->getCart();
+        $bookIds = [];
+        foreach ($carts as $cart) {
+        	array_push($bookIds, $cart->book_id);
+        }
+        $books = Book::whereIn('id', $bookIds)->get();
+        foreach ($carts as $cart) {
+        	foreach ($books as $book) {
+        		if($cart->book_id == $book->id){
+        			if($book->state < $cart->quantity){
+        				return redirect()->back()->withErrors([
+			                'over-quantity'=> __('messages.over-quantity', [
+			                	'quantity' => $book->state, 'title' => $book->title])
+			            ]);
+        			}
+        		}
+        	}
+        }
+
         //  Add order
         $order = new Order;
         $order->user_id = Auth::user()->id;
@@ -33,8 +55,6 @@ class OrderController extends Controller
 
         //  Add order detail (get cart then insert into order detai)
         $orderDetails = [];
-        $cartController = new CartController;
-        $carts = $cartController->getCart();
         foreach ($carts as $cart) {
             array_push($orderDetails, [
                 'order_id' => $order->id,
@@ -46,6 +66,16 @@ class OrderController extends Controller
         $orderDetailController = new OrderDetailController;
         $orderDetailController->addOrderDetail($orderDetails);
 
+        //	Update book quantity
+        foreach ($carts as $cart) {
+        	foreach ($books as $book) {
+        		if($cart->book_id == $book->id){
+        			$book->state = $book->state - $cart->quantity;
+        			$book->save();
+        		}
+        	}
+        }
+        
         //  Clear cart 
         $cartController->clearCart();
 
@@ -59,7 +89,8 @@ class OrderController extends Controller
         $orderStateHistoryController = new OrderStateHistoryController;
         $orderStateHistoryController->addOrderStateHistory($orderStateHistory);
 
-        return redirect()->route('order.show',['order' => $order])->with('status', __('messages.add-order-successfully'));
+        return redirect()->route('order.show',['order' => $order])
+        ->with('status', __('messages.add-order-successfully'));
     }
 
     public function getOrderMemberList(){
@@ -78,7 +109,8 @@ class OrderController extends Controller
     {
         $multiplications = [];
         foreach ($order->orderDetails as $orderDetail) {
-            $multiplications[$orderDetail->id] = $orderDetail->quantity * $orderDetail->book->saleprice;
+            $multiplications[$orderDetail->id] = 
+            $orderDetail->quantity * $orderDetail->book->saleprice;
         }
         $total = array_sum($multiplications);
         $deliveryType = array_search($order->delivery,config('delivery.types'));
