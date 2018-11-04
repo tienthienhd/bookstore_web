@@ -76,7 +76,23 @@ class OrderController extends Controller
      */
     public function getOrderMemberDetail(Order $order)
     {
-        return view('orders.show', ['order' => $order]);
+        $multiplications = [];
+        foreach ($order->orderDetails as $orderDetail) {
+            $multiplications[$orderDetail->id] = $orderDetail->quantity * $orderDetail->book->saleprice;
+        }
+        $total = array_sum($multiplications);
+        $deliveryType = array_search($order->delivery,config('delivery.types'));
+        $deliveryFees = config('delivery.fees.'.$deliveryType);
+        $total += $deliveryFees;
+        $orderState = array_search($order->state,config('order-state'));
+        return view('orders.show', [
+            'order' => $order, 
+            'deliveryType' => $deliveryType,
+            'deliveryFees' => $deliveryFees,
+            'total' => $total,
+            'multiplications' => $multiplications,
+            'orderState' => $orderState,
+        ]);
     }
 
     public function getOrderStateHistory(){
