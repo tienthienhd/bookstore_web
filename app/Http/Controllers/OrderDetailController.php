@@ -7,15 +7,10 @@ use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function addOrderDetail(Request $request)
+    
+    public function addOrderDetail($orderDetails)
     {
-        //
+        OrderDetail::insert($orderDetails);
     }
 
     /**

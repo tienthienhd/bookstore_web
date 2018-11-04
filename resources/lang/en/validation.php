@@ -170,6 +170,9 @@ return [
             'price' => 'Price',
             'quantity' => 'Quantity',
         ],
+        'order' => [
+            'delivery' => 'Delivery',
+        ],
     ],
 
 ];

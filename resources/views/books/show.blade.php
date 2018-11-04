@@ -25,7 +25,7 @@
 		{{__('book-category.'.$book->category)}}
 		{{$book->cover}}
 		{{$book->description}}
-		{{$book->saleprice}}
+		{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
 		{{$star}}
 		<a href="#">{{__('btn.comment-detail')}}</a>
 		<form action="{{route('cart.add')}}" method="post">

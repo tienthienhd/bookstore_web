@@ -17,8 +17,8 @@
 		{{__('book-category.'.$book->category)}}
 		{{$book->cover}}
 		{{$book->description}}
-		{{$book->saleprice}}
-		{{$book->purchase_price}}
+		{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
+		{{__('word-and-statement.price', ['price' => number_format($book->purchase_price, 0, '.', '.')])}}
 		{{($book->state < 0) ? '--' : $book->state}}
 		<a href="{{route('manager.book.edit', ['book' => $book])}}">{{__('btn.edit')}}</a>
 		<form action="{{route('manager.book.update.off-state', ['book' => $book])}}" method="post">

@@ -14,7 +14,8 @@
                         </div>
                     @endif
                 @auth
-                    <a href="{{route('cart.index')}}">Cart</a>
+                    <a href="{{route('cart.index')}}">{{__('btn.cart')}}</a>
+                    <a href="{{route('order.index')}}">{{__('btn.order-history')}}</a>
                 @endauth
                 <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:
@@ -40,7 +41,7 @@
                         <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
                         {{$book->author}}
                         {{__('book-category.'.$book->category)}}
-                        {{$book->saleprice}}<br>
+                        {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}<br>
                     @endforeach
                     {{$books->links()}}
                 @else

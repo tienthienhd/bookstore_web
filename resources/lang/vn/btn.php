@@ -20,6 +20,8 @@ return [
 	'comment-detail' => 'Chi tiết đánh giá',
 	'delete' => 'Xóa',
 	'add-order' => 'Đặt hàng',
+	'cart' => 'Giỏ hàng',
+	'order-history' => 'Lịch sử mua hàng',
 ];
 
 ?>

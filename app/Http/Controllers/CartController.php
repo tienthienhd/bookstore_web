@@ -51,7 +51,11 @@ class CartController extends Controller
     {
         $userId = Auth::user()->id;
         $carts = Cart::where('user_id', $userId)->get();
-        return view('carts.index', ['carts' => $carts]);
+        $multiplications = [];
+        foreach ($carts as $cart) {
+            $multiplications[$cart->id] = $cart->quantity * $cart->book->saleprice;
+        }
+        return view('carts.index', ['carts' => $carts, 'multiplications' => $multiplications]);
     }
 
     /**
@@ -87,10 +91,13 @@ class CartController extends Controller
     }
 
     public function clearCart(){
-
+        $userId = Auth::user()->id;
+        Cart::where('user_id', $userId)->delete();
     }
 
     public function getCart(){
-
+        $userId = Auth::user()->id;
+        return Cart::where('user_id', $userId)->get();
     }
+
 }

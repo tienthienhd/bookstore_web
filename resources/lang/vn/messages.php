@@ -13,5 +13,8 @@ return [
 	'blank-cart' => 'Giỏ hàng trống!',
 	'update-cart-quantity-successfully' => 'Cập nhật số lượng cuốn :title trong giỏ thành công!',
 	'delete-cart-successfully' => 'Xóa cuốn sách :title khỏi giỏ hàng thành công!',
+	'add-order-successfully' => 'Đặt hàng thành công!',
+	'select-a-delivery' => 'Chọn một hình thức giao hàng',
+	'no-order-found' => 'Bạn chưa có đơn hàng nào!'
 ];
 ?>
