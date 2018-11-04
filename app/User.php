@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'fullname', 'email', 'password', 'phone', 'address', 'avatar', 'role_id'
     ];
 
     /**
@@ -27,4 +27,32 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role(){
+          return $this->hasOne('App\Models\Role','id','role_id'); 
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function comments(){
+        return $this->hasMany('App\Models\Comment','user_id','id'); 
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function carts(){
+        return $this->hasMany('App\Models\Cart','user_id','id'); 
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function orders(){
+        return $this->hasMany('App\Models\Order','user_id','id'); 
+    }
 }
