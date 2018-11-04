@@ -14,7 +14,8 @@
                         </div>
                     @endif
                 @auth
-                    <a href="{{route('cart.index')}}">Cart</a>
+                    <a href="{{route('cart.index')}}">{{__('btn.cart')}}</a>
+                    <a href="{{route('order.index')}}">{{__('btn.order-history')}}</a>
                 @endauth
                 <form action="{{route(\Request::route()->getName())}}" method="get">
                     {{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}:

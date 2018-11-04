@@ -20,6 +20,8 @@ return [
 	'comment-detail' => 'Comment detail',
 	'delete' => 'Delete',
 	'add-order' => 'Order',
+	'cart' => 'Cart',
+	'order-history' => 'Order History',
 ];
 
 ?>

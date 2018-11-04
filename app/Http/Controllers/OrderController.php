@@ -22,7 +22,7 @@ class OrderController extends Controller
     {
         //  Validate the data
         $valid = $request->validated();
-        
+
         //  Add order
         $order = new Order;
         $order->user_id = Auth::user()->id;
@@ -63,7 +63,9 @@ class OrderController extends Controller
     }
 
     public function getOrderMemberList(){
-        
+        $userId = Auth::user()->id;
+        $orders = Order::where('user_id', $userId)->orderBy('created_at', 'desc')->paginate();
+        return view('orders.index', ['orders' => $orders]);
     }
 
     /**

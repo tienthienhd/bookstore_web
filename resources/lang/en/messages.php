@@ -15,5 +15,6 @@ return [
 	'delete-cart-successfully' => 'Delete :title from cart successfully!',
 	'add-order-successfully' => 'Add order successfully!',
 	'select-a-delivery' => 'Sellect a delivery',
+	'no-order-found' => 'No order found!',
 ];
 ?>

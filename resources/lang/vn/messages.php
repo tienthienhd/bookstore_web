@@ -15,5 +15,6 @@ return [
 	'delete-cart-successfully' => 'Xóa cuốn sách :title khỏi giỏ hàng thành công!',
 	'add-order-successfully' => 'Đặt hàng thành công!',
 	'select-a-delivery' => 'Chọn một hình thức giao hàng',
+	'no-order-found' => 'Bạn chưa có đơn hàng nào!'
 ];
 ?>
