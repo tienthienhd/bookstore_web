@@ -29,7 +29,19 @@ Route::group(['prefix' => 'manager/book', 'middleware' => ['web', 'auth', 'manag
 	Route::get('/{book}/edit', 'BookController@showEditBookForm')->name('manager.book.edit');
 	Route::put('/{book}', 'BookController@updateBook')->name('manager.book.update');
 	Route::put('/{book}/stop-sale', 'BookController@stopSaleBook')->name('manager.book.update.off-state');
+});	
+Route::group(['prefix' => 'customer/comment', 'middleware' => ['web', 'auth', 'customer']], function(){
+	Route::get('/', 'CommentController@getListCommentsOfMember')->name('customer.comment.index');
+	
+	Route::get('/commentlist/{comment_id}', 'CommentController@getCommentDetail')->name('customer.commentdetail');
+	Route::get('waitcommentlist', 'CommentController@getListWaitForComment')->name('customer.waitcommentlist');
+	Route::get('waitcommentlist/{book_id}', 'CommentController@showAddCommentForm')->name('customer.comment.create');
+	Route::post('/', 'CommentController@addComment')->name('customer.comment.store');
+	Route::get('/{comment_id}/delete', 'CommentController@deleteComment')->name('customer.comment.delete');
+	Route::get('{comment}/edit', 'CommentController@showEditForm')->name('customer.comment.edit');
+	Route::post('/{comment}', 'CommentController@updateComment')->name('customer.comment.update');
 });
 
 Route::get('/book/{book}', 'BookController@getBookDetail')->name('book.show')
 ->middleware(['not-admin', 'not-manager', 'not-locked']);
+Route::get('book/{id}/comment', 'CommentController@getCommentsOfBook')->name('book.comment');

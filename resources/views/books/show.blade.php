@@ -11,15 +11,20 @@
         </div>
     @endif	
 	@if(isset($book))
-		{{$book->title}}
-		{{$book->author}}
-		{{__('book-category.'.$book->category)}}
-		{{$book->cover}}
-		{{$book->description}}
-		{{$book->saleprice}}
-		{{$star}}
-		<a href="#">{{__('btn.add-to-card')}}</a>
-		<a href="#">{{__('btn.comment-detail')}}</a>
+		{{$book->title}}<br>
+		{{$book->author}}<br>
+		{{__('book-category.'.$book->category)}}<br>
+		{{$book->cover}}<br>
+		{{$book->description}}<br>
+		{{$book->saleprice}}<br>
+		{{$star}}<br>
+		
+
+
+		<a href="#">{{__('btn.add-to-card')}}</a><br>
+
+
+		<a href="{{route('book.comment',['bookId' => $book->id])}}">{{__('btn.comment-detail')}}</a><br>
 	@endif
 </body>
 </html>

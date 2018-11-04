@@ -18,6 +18,8 @@ return [
 	'refine' => 'Lọc',
 	'add-to-card' => 'Thêm vào giỏ',
 	'comment-detail' => 'Chi tiết đánh giá',
+	'delete' => 'Xóa',
+	'add-comment' => 'Thêm comment'
 ];
 
 ?>

@@ -9,6 +9,7 @@ return [
 	'order-manage' => 'Order Manage',
 	'report-manage' => 'Report',
 	'add-book' => 'Add Book',
+	'add-comment' => 'Add Comment'
 	'detail' => 'Detail',
 	'edit' => 'Edit',
 	'stop-sale' => 'Stop Sale Book',
