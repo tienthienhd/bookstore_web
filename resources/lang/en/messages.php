@@ -13,5 +13,7 @@ return [
 	'blank-cart' => 'Your cart is empty!',
 	'update-cart-quantity-successfully' => 'Update quantity of :title in cart successfully!',
 	'delete-cart-successfully' => 'Delete :title from cart successfully!',
+	'add-order-successfully' => 'Add order successfully!',
+	'select-a-delivery' => 'Sellect a delivery',
 ];
 ?>

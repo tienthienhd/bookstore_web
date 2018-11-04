@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use Illuminate\Http\Request;
+use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\OrderDetailController;
@@ -12,58 +13,28 @@ use App\Http\Controllers\OrderStateHistoryController;
 class OrderController extends Controller
 {
     /**
-     * 
-     * @var CartController
-     */
-    private $cartController;
-
-    /**
-     * 
-     * @var OrderDetailController
-     */
-    private $orderDetailController;
-
-    /**
-     * 
-     * @var OrderStateHistoryController
-     */
-    private $orderStateHistoryController;
-
-    /**
-     * 
-     * @param CartController              $cartController              
-     * @param OrderController             $orderController             
-     * @param OrderStateHistoryController $orderStateHistoryController 
-     */
-    public function __construct(
-        CartController $cartController,
-        OrderController $orderController,
-        OrderStateHistoryController $orderStateHistoryController
-    ){
-        $this->cartController = $cartController;
-        $this->orderController = $orderController;
-        $this->orderStateHistoryController = $orderStateHistoryController;
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addOrder(Request $request)
+    public function addOrder(OrderRequest $request)
     {
+        //  Validate the data
+        $valid = $request->validated();
+        
         //  Add order
         $order = new Order;
         $order->user_id = Auth::user()->id;
         $order->total = $request->total;
         $order->delivery = $request->delivery;
-        $order->state = __('order-state.new-created') ;
+        $order->state = config('order-state.new-created') ;
         $order->save();
 
         //  Add order detail (get cart then insert into order detai)
         $orderDetails = [];
-        $carts = $this->cartController->getCart();
+        $cartController = new CartController;
+        $carts = $cartController->getCart();
         foreach ($carts as $cart) {
             array_push($orderDetails, [
                 'order_id' => $order->id,
@@ -72,25 +43,27 @@ class OrderController extends Controller
                 'dead_price' => $cart->book->saleprice
             ]);
         }
-        $this->orderDetailController->addOrderDetail($orderDetails);
+        $orderDetailController = new OrderDetailController;
+        $orderDetailController->addOrderDetail($orderDetails);
 
         //  Clear cart 
-        $this->cartController->clearCart();
+        $cartController->clearCart();
 
         //  Add order state history
         $orderStateHistory = [
             'order_id' => $order->id,
             'state' => $order->state,
-            'title' => __('order-sate.title'.$order->state),
-            'description' => __('order-sate.description'.$order->state)
+            'title' => array_search($order->state,config('order-state')),
+            'description' => array_search($order->state,config('order-state'))
         ];
-        $this->orderStateHistoryController->addOrderStateHistory($orderStateHistory);
+        $orderStateHistoryController = new OrderStateHistoryController;
+        $orderStateHistoryController->addOrderStateHistory($orderStateHistory);
 
         return redirect()->route('order.show',['order' => $order])->with('status', __('messages.add-order-successfully'));
     }
 
     public function getOrderMemberList(){
-
+        
     }
 
     /**
@@ -101,7 +74,7 @@ class OrderController extends Controller
      */
     public function getOrderMemberDetail(Order $order)
     {
-        //
+        return view('orders.show', ['order' => $order]);
     }
 
     public function getOrderStateHistory(){

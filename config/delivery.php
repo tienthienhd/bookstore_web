@@ -1,14 +1,16 @@
 <?php 
 
 return [
-	'fast',
-	'standard',
-	'savings',
+	'types' => [
+		'fast' => 1,
+		'standard' => 2,
+		'savings' => 3
+	],
 	'fees' => [
 		'fast' => 30000,
-		'standard' => 15000,
-		'savings'=> 10000
-	]
+		'standard' => 20000,
+		'savings' => 10000
+	],
 ];
 
 ?>

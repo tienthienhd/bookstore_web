@@ -43,5 +43,6 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 	});
 	Route::group(['prefix' => 'order'], function(){
 		Route::post('/add', 'OrderController@addOrder')->name('order.add');
+		Route::get('/{order}', 'OrderController@getOrderMemberDetail')->name('order.show');
 	});	
 });

@@ -168,6 +168,9 @@ return [
             'price' => 'Giá',
             'quantity' => 'Số lượng',
         ],
+        'order' => [
+            'delivery' => 'Hình thức giao hàng',
+        ],
     ],
 ];
 ?>

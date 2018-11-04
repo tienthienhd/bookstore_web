@@ -6,6 +6,14 @@ return[
 	'search-key' => 'Search key',
 	'refine-key' => 'Refine key',
 	'price' => 'VND :price',
+	'provisional-order' => 'Provisional order',
+	'order' => [
+		'item' => 'Item',
+		'price' => 'Price',
+		'quantity' => 'Quantity',
+		'multiplication' => 'Multiplication',
+		'total' => 'Total',
+	],
 ];
 
 ?>
