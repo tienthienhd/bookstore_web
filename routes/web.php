@@ -16,19 +16,9 @@
 // });
 
 Route::get('/', function(){
-	return view('admin/index');
+	return view('admin.book.show');
 });
-
-Route::get('/index', function(){
-	return view('admin/index');
-});
-
-Route::get('/book_manager', function(){
-	return view('admin/book_manager');
-});
-Route::get('/edit_book', function(){
-	return view('admin/edit_book');
-});
+// Route::get('/', 'BookController@getBookDetail')->name('book.show');
 
 
 Auth::routes();

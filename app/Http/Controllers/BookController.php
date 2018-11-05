@@ -50,7 +50,7 @@ class BookController extends Controller
         // Todo
         //if manage để nguyên return về books.manage.show
         //ngược lại bỏ bớt return về books.show
-        return view('books.manager.show', ['book' => $book]);
+        return view('admin.book.show', ['book' => $book]);
 
     }
 
@@ -59,7 +59,7 @@ class BookController extends Controller
      */
     public function getBookListManage(){
         $books = Book::sortable()->paginate();
-        return view('books.manager.index')->with(['books' => $books]);
+        return view('admin.book.index')->with(['books' => $books]);
     }
 
     /**
@@ -137,7 +137,8 @@ class BookController extends Controller
      */
     public function showEditBookForm(Book $book)
     {
-        return view('books.manager.edit', ['book' => $book]);
+        return view('admin.book.edit', ['book' => $book]);
+        // return view('books.manager.edit', ['book' => $book]);
     }
 
     /**
