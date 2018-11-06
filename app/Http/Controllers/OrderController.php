@@ -14,10 +14,8 @@ use App\Http\Controllers\OrderStateHistoryController;
 class OrderController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Add new order record
+     * @param OrderRequest $request 
      */
     public function addOrder(OrderRequest $request)
     {
@@ -127,8 +125,10 @@ class OrderController extends Controller
         ]);
     }
 
-    public function getOrderStateHistory(){
-
+    public function getOrderStateHistory(Order $order){
+        $orderStateHistoryController = new OrderStateHistoryController;
+        $orderStateHistories = $orderStateHistoryController->getOrderStateHistory($order);
+        return view('orders.state-history' , ['orderStateHistories' => $orderStateHistories]);
     }
 
     /**

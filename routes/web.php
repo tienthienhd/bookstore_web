@@ -57,5 +57,7 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 		Route::post('/add', 'OrderController@addOrder')->name('order.add');
 		Route::get('/{order}', 'OrderController@getOrderMemberDetail')->name('order.show');
 		Route::get('/', 'OrderController@getOrderMemberList')->name('order.index');
+		Route::get('/{order}/state-history', 'OrderController@getOrderStateHistory')
+		->name('order.state-history')->middleware('owner');
 	});	
 });

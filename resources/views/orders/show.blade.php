@@ -11,6 +11,7 @@
 	Mã đơn hàng:{{$order->id}}<br>
 	Ngày đặt:{{$order->created_at}}<br>
 	Trạng thái: {{__('order-state.descripton.'.$orderState)}}<br>
+	<a href="{{route('order.state-history', ['order' => $order])}}"> {{__('btn.order-state-history')}}</a>
 	Bao gồm:<br>
 	<table>
 		<thead>

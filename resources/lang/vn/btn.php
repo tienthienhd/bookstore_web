@@ -23,6 +23,7 @@ return [
 	'add-order' => 'Đặt hàng',
 	'cart' => 'Giỏ hàng',
 	'order-history' => 'Lịch sử mua hàng',
+	'order-state-history' => 'Lịch sử trạng thái đơn hàng',
 ];
 
 ?>
