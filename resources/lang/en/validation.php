@@ -163,6 +163,7 @@ return [
             'password' => 'Password',
             'confirm-password' => 'Confirm Password',
             'phone' => 'Phone number',
+            'avatar' => 'Avatar',
             'address' => 'Address'
         ],
         'comment' => [

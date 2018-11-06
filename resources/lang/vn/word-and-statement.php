@@ -16,6 +16,7 @@ return[
 		'multiplication' => 'Thành tiền',
 		'total' => 'Tổng cộng',
 	],
+	'profile' => 'Thông tin cá nhân',
 ];
 
 ?>

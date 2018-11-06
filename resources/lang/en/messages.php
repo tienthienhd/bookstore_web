@@ -21,5 +21,6 @@ return [
 	'no-data' => 'No data!',
 	'cancel-order-successfully' => 'Cancel order successfully!',
 	'cant-cancel-order' => 'You can not cancel this order! :description',
+	'update-profile-successfully' => 'Update profile successfully!',
 ];
 ?>

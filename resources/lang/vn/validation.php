@@ -161,6 +161,7 @@ return [
             'password' => 'Mật khẩu',
             'confirm-password' => 'Nhập lại mật khẩu',
             'phone' => 'Số điện thoại',
+            'avatar' => 'Ảnh đại diện',
             'address' => 'Địa chỉ'
         ],
          'comment' => [

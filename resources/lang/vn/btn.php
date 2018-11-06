@@ -14,6 +14,7 @@ return [
 	'stop-sale' => 'Ngừng kinh doanh',
 	'sale-again' => 'Kinh doanh trở lại',
 	'upload-cover' => 'Tải lên ảnh bìa sách',
+	'upload-avatar' => 'Tải lên ảnh đại diện',
 	'search' => 'Tìm kiếm',
 	'refine' => 'Lọc',
 	'add-to-card' => 'Thêm vào giỏ',
