@@ -9,7 +9,7 @@ return [
 		'ship-assigned' => 'Đã giao cho đơn vị vận chuyển',
 		'delivered' => 'Đã giao hàng',
 	],
-	'descripton' => [
+	'description' => [
 		'canceled' => 'Đơn hàng đã bị hủy',
 		'new-created' => 'Đã tiếp nhận đơn hàng',
 		'confirmed' => 'Đơn hàng đã được xác nhận',

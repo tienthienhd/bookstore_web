@@ -19,5 +19,7 @@ return [
 	'select-a-delivery' => 'Chọn một hình thức giao hàng',
 	'no-order-found' => 'Bạn chưa có đơn hàng nào!',
 	'no-data' => 'Không có dữ liệu!',
+	'cancel-order-successfully' => 'Hủy đơn hàng thành công!',
+	'cant-cancel-order' => 'Bạn không thể hủy đơn hàng này! :description',
 ];
 ?>

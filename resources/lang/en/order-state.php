@@ -9,7 +9,7 @@ return [
 		'ship-assigned' => 'Ship assigned',
 		'delivered' => 'Delivered',
 	],
-	'descripton' => [
+	'description' => [
 		'canceled' => 'The order had been canceled',
 		'new-created' => 'The order have been created',
 		'confirmed' => 'The order have been confirmed',

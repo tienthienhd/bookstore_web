@@ -7,7 +7,7 @@
 <body>
 	@if(isset($orderStateHistories) && count($orderStateHistories)>0)
 		@foreach($orderStateHistories as $orderStateHistory)
-			{{$orderStateHistory->description}} ---------- {{$orderStateHistory->created_at}}<br>
+			{{__('order-state.description.'.$orderStateHistory->description)}} ---------- {{$orderStateHistory->created_at}}<br>
 		@endforeach
 	@else
 		{{__('messages.no-data')}}

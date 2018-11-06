@@ -19,5 +19,7 @@ return [
 	'select-a-delivery' => 'Sellect a delivery',
 	'no-order-found' => 'No order found!',
 	'no-data' => 'No data!',
+	'cancel-order-successfully' => 'Cancel order successfully!',
+	'cant-cancel-order' => 'You can not cancel this order! :description',
 ];
 ?>
