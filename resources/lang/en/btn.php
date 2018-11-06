@@ -23,6 +23,7 @@ return [
 	'add-order' => 'Order',
 	'cart' => 'Cart',
 	'order-history' => 'Order History',
+	'order-state-history' => 'Order State History',
 ];
 
 ?>

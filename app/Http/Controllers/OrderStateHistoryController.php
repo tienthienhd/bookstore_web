@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\OrderStateHistory;
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderStateHistoryController extends Controller
@@ -10,17 +11,13 @@ class OrderStateHistoryController extends Controller
     
     public function addOrderStateHistory($orderStateHistory)
     {
-        OrderStateHistory::insert($orderStateHistory);
+        OrderStateHistory::create($orderStateHistory);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\OrderStateHistory  $orderStateHistory
-     * @return \Illuminate\Http\Response
-     */
-    public function getOrderStateHistory(OrderStateHistory $orderStateHistory)
+    
+    public function getOrderStateHistory(Order $order)
     {
-        //
+        $orderStateHistories = OrderStateHistory::where('order_id', $order->id)->get();
+        return $orderStateHistories;
     }
 }

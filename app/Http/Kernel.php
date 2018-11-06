@@ -67,5 +67,6 @@ class Kernel extends HttpKernel
         'not-admin' =>  \App\Http\Middleware\IsNotAdmin::class, 
         'not-manager' =>  \App\Http\Middleware\IsNotManager::class, 
         'not-locked' =>  \App\Http\Middleware\IsNotLocked::class, 
+        'owner' =>  \App\Http\Middleware\IsOwner::class, 
     ];
 }
