@@ -24,6 +24,7 @@ return [
 	'cart' => 'Giỏ hàng',
 	'order-history' => 'Lịch sử mua hàng',
 	'order-state-history' => 'Lịch sử trạng thái đơn hàng',
+	'cancel' => 'Hủy',
 ];
 
 ?>

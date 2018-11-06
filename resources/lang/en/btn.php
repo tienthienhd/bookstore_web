@@ -24,6 +24,7 @@ return [
 	'cart' => 'Cart',
 	'order-history' => 'Order History',
 	'order-state-history' => 'Order State History',
+	'cancel' => 'Cancel',
 ];
 
 ?>

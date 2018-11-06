@@ -59,5 +59,7 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 		Route::get('/', 'OrderController@getOrderMemberList')->name('order.index');
 		Route::get('/{order}/state-history', 'OrderController@getOrderStateHistory')
 		->name('order.state-history')->middleware('owner');
+		Route::get('/{order}/cancel', 'OrderController@cancelOrder')
+		->name('order.cancel')->middleware('owner');
 	});	
 });
