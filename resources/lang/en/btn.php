@@ -14,6 +14,7 @@ return [
 	'stop-sale' => 'Stop Sale Book',
 	'sale-again' => 'Sale Book Again',
 	'upload-cover' => 'Upload A Cover Picture',
+	'upload-avatar' => 'Upload An Avatar Picture',
 	'search' => 'Search',
 	'refine' => 'Refine',
 	'add-to-card' => 'Add to card',
@@ -25,6 +26,9 @@ return [
 	'order-history' => 'Order History',
 	'order-state-history' => 'Order State History',
 	'cancel' => 'Cancel',
+	'change-password' => 'Change password',
+	'update-password' => 'Update password',
+	'update-profile' => 'Update profile',
 ];
 
 ?>

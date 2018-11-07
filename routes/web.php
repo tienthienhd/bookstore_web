@@ -63,3 +63,10 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 		->name('order.cancel')->middleware('owner');
 	});	
 });
+
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'not-locked']], function(){
+	Route::get('/', 'UserController@getProfile')->name('user.profile');
+	Route::post('/', 'UserController@updateProfile')->name('user.update-profile');
+	Route::get('/password-change', 'UserController@showChangePasswordForm')->name('user.show.password-change');
+	Route::post('/password-change', 'UserController@changePassword')->name('user.password-change');
+});

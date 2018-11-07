@@ -21,5 +21,8 @@ return [
 	'no-data' => 'Không có dữ liệu!',
 	'cancel-order-successfully' => 'Hủy đơn hàng thành công!',
 	'cant-cancel-order' => 'Bạn không thể hủy đơn hàng này! :description',
+	'update-profile-successfully' => 'Cập nhật thông tin cá nhân thành công!',
+	'update-password-successfully' => 'Cập nhật mật khẩu thành công!',
+	'incorrect-password' => 'Nhập sai mật khẩu!',
 ];
 ?>

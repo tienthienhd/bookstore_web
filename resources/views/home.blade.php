@@ -8,6 +8,7 @@
                 <div class="card-header">Dashboard</div>
                 <a href="{{route('customer.waitcommentlist')}}" title=""> {{__('word-and-statement.wait-comment')}} </a>
                 <a href="{{route('customer.comment.index')}}" title=""> {{__('word-and-statement.list-comment')}} </a>
+                <a href="{{route('user.profile')}}">{{__('word-and-statement.profile')}}</a>
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
