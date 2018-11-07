@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfileRequest;
+use App\Http\Requests\ChangePasswordRequest;
 use DateTime;
 
 class UserController extends Controller
@@ -100,10 +102,19 @@ class UserController extends Controller
     }
 
     public function showChangePasswordForm(){
-
+        return view('users.change-password');
     }
 
-    public function changePassword(){
-        
+    public function changePassword(ChangePasswordRequest $request){
+        $valid = $request->validated();
+
+        $user = Auth::user();
+
+        if(Hash::check($request->password, $user->password)){
+            $user->password = Hash::make($request->newPassword);
+            $user->save();
+            return redirect()->back()->with('status', __('messages.update-password-successfully'));
+        }
+        return redirect()->back()->withErrors(['incorrect-password' => __('messages.incorrect-password')]);
     }
 }

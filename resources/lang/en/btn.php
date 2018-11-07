@@ -26,6 +26,9 @@ return [
 	'order-history' => 'Order History',
 	'order-state-history' => 'Order State History',
 	'cancel' => 'Cancel',
+	'change-password' => 'Change password',
+	'update-password' => 'Update password',
+	'update-profile' => 'Update profile',
 ];
 
 ?>

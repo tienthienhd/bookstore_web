@@ -180,6 +180,10 @@ return [
         'order' => [
             'delivery' => 'Hình thức giao hàng',
         ],
+        'change-password' => [
+            'new-password' => 'Mật khẩu mới',
+            'confirm-new-password' => 'Nhập lại mật khẩu mới',
+        ],
     ],
 ];
 ?>

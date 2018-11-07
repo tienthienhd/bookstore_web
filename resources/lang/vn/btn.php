@@ -26,6 +26,9 @@ return [
 	'order-history' => 'Lịch sử mua hàng',
 	'order-state-history' => 'Lịch sử trạng thái đơn hàng',
 	'cancel' => 'Hủy',
+	'change-password' => 'Đổi mật khẩu',
+	'update-password' => 'Cập nhật mật khẩu',
+	'update-profile' => 'Cập nhật thông tin cá nhân',
 ];
 
 ?>

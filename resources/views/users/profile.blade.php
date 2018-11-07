@@ -20,6 +20,7 @@
             {{ session('status') }}
         </div>
     @endif 
+    <a href="{{route('user.show.password-change')}}">{{__('btn.change-password')}}</a>
     <form method="POST" action="{{ route('user.update-profile') }}" enctype="multipart/form-data">
     @csrf
 
@@ -110,7 +111,7 @@
 	    <div class="form-group row mb-0">
 	        <div class="col-md-6 offset-md-4">
 	            <button type="submit" class="btn btn-primary">
-	                {{ __('btn.edit') }}
+	                {{ __('btn.update-profile') }}
 	            </button>
 	        </div>
 	    </div>

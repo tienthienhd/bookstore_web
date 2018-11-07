@@ -182,6 +182,10 @@ return [
         'order' => [
             'delivery' => 'Delivery',
         ],
+        'change-password' => [
+            'new-password' => 'New password',
+            'confirm-new-password' => 'Confirm new password',
+        ],
     ],
 
 ];
