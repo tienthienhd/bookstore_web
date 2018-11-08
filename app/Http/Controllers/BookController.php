@@ -7,39 +7,48 @@ use Illuminate\Http\Request;
 use App\Http\Requests\BookRequest;
 use App\Http\Requests\OldBookRequest;
 use App\Http\Requests\EditBookRequest;
+use App\Http\Requests\SearchBookRequest;
 use DateTime;
 
 class BookController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * 
+     * @return mix
      */
     public function getListBooksForHomePage()
     {
-        //  Todo
         $books = Book::orderBy('created_at', 'ASC')->paginate();
-        return view('home', ['books' => $books]);
+        return $books;
     }
 
     /**
-     * @param $category
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @param String $category
+     * @return mix
      */
     public function getListBooksByCategory($category){
-        //  Todo
-        $books = Book::where('category', $category)->sortBy('created_at')->paginate();
-        return view('home', ['books' => $books]);
+        $books = Book::where('category', $category)->orderBy('created_at')->paginate();
+        return $books;
     }
 
     /**
-     * @param Request $request
+     * @param String $searchString
+     * @return  mix
      */
-    public function searchBook(Request $request){
-        // Todo
-        //$books = Book::where($request);
-        //return view('home', ['books' => $books]);
+    public function searchBook($searchString){
+        $books = Book::where('title', 'like', '%' . $searchString . '%')
+        ->orWhere('author', 'like', '%' . $searchString . '%')
+        ->paginate();
+        return $books;
+    }
+
+    /**
+     * @param Book $book
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getBookDetailManage(Book $book){
+        return view('manager.books.show', ['book' => $book]);
+
     }
 
     /**
@@ -51,15 +60,46 @@ class BookController extends Controller
         //if manage để nguyên return về books.manage.show
         //ngược lại bỏ bớt return về books.show
         return view('admin.book.show', ['book' => $book]);
-
     }
 
     /**
+     * @param SearchBookRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getBookListManage(){
-        $books = Book::sortable()->paginate();
-        return view('admin.book.index')->with(['books' => $books]);
+
+    public function getBookListManage(SearchBookRequest $request){
+        //  Validate the data
+        $valid = $request->validated();
+        
+        $searchId = $request->searchId;
+        $searchTitle = $request->searchTitle;
+        $searchAuthor = $request->searchAuthor;
+        $searchCategory = $request->searchCategory;
+
+        $books = Book::sortable();
+
+        if ($searchId != '') {
+            $books = $books->where('id', $searchId);
+        }
+        if ($searchTitle != '') {
+            $books= $books->where('title', 'like', '%' . $searchTitle . '%');
+        }
+        if ($searchAuthor != '') {
+            $books = $books->where('author', 'like', '%' . $searchAuthor . '%');
+        }
+        if ($searchCategory != '') {
+            $books = $books->where('category', $searchCategory);
+        }
+
+        $books = $books->paginate();
+
+        return view('admin.books.index')->with([
+            'books' => $books,
+            'searchId' => $searchId,
+            'searchTitle' => $searchTitle,
+            'searchAuthor' => $searchAuthor,
+            'searchCategory' => $searchCategory,
+        ]);
     }
 
     /**
@@ -70,7 +110,7 @@ class BookController extends Controller
     public function showAddBookForm()
     {
         $books = Book::all();
-        return view('books.manager.add', ['books' => $books]);
+        return view('admin.books.add', ['books' => $books]);
     }
 
     /**
@@ -86,7 +126,8 @@ class BookController extends Controller
 
         //  Prepare cover image to save
         $coverFile = $request->cover;
-        $cover = ((new DateTime)->getTimestamp()).'_'.rand().'.'.$coverFile->getClientOriginalExtension();
+        $cover = ((new DateTime)->getTimestamp())
+            .'_'.rand().'.'.$coverFile->getClientOriginalExtension();
         $destinationPath = public_path('/img/covers');
 
         //  Save cover image
@@ -106,7 +147,14 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->back()->with('status', 'Store successfully!');
+        return redirect()->route('manager.book.index')
+            ->with(
+                'status',
+                 __(
+                    'messages.add-new-book-successfully',
+                    ['id' => $book->id]
+                )
+             );
     }
 
     /**
@@ -122,11 +170,27 @@ class BookController extends Controller
 
         //  Find book by id and update it's state
         $book = Book::find($request->bookId);
-        $book->state = $book->state + $request->addQuantity;
+
+        //  If book had been stopped salling
+        if($book->state < 0){
+            $book->state = $book->state - $request->addQuantity;
+        }else{
+            $book->state = $book->state + $request->addQuantity;
+        }
 
         $book->save();
 
-        return redirect()->back()->with('status', 'Update successfully!');
+        return redirect()->route('manager.book.index')
+            ->with(
+                'status', 
+                __(
+                    'messages.add-old-book-successfully',
+                    [
+                        'id' => $book->id, 
+                        'quantity' => $request->addQuantity
+                    ]
+                )
+            );
     }
 
     /**
@@ -138,7 +202,6 @@ class BookController extends Controller
     public function showEditBookForm(Book $book)
     {
         return view('admin.book.edit', ['book' => $book]);
-        // return view('books.manager.edit', ['book' => $book]);
     }
 
     /**
@@ -164,7 +227,8 @@ class BookController extends Controller
         
             //  Prepare cover image to save
             $coverFile = $request->cover;
-            $cover = ((new DateTime)->getTimestamp()).'_'.rand().'.'.$coverFile->getClientOriginalExtension();
+            $cover = ((new DateTime)->getTimestamp())
+                .'_'.rand().'.'.$coverFile->getClientOriginalExtension();
             $destinationPath = public_path('/img/covers');
 
             //  Save cover image
@@ -181,7 +245,14 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.show', ['book' => $book])->with('status', 'Update book successfully!');
+        return redirect()->route('book.show', ['book' => $book])
+            ->with(
+                'status',
+                 __(
+                    'messages.update-book-successfully',
+                    ['id' => $book->id]
+                )
+             );
     }
 
     /**
@@ -193,8 +264,35 @@ class BookController extends Controller
      */
     public function stopSaleBook(Request $request, Book $book)
     {
-        $book->state = -1;
+        $book->state = -$book->state -1;
+        /*
+        *   If have 0 book, stop sale -> -1
+        *   If have 10 books, stop sale -> -11
+        *   And then when to sale again, $book->state = -$book->state -1
+        */
         $book->save();
-        return redirect()->back()->with('status', 'Update state of book successfully!');
+
+        //  Stop sale book
+        if($book->state < 0){
+            return redirect()->back()
+                ->with(
+                    'status',
+                     __(
+                        'messages.stop-sale-book-successfully',
+                        ['id' => $book->id]
+                    )
+                 );    
+        }
+
+        //  Resale book
+        return redirect()->back()
+            ->with(
+                'status',
+                 __(
+                    'messages.re-stop-sale-book-successfully',
+                    ['id' => $book->id]
+                )
+             );
     }
+    
 }

@@ -143,6 +143,7 @@ return [
 
     'attributes' => [
         'book' => [
+            'id' => 'ID',
             'title' => 'Title',
             'author' => 'Author',
             'category' => 'Category',
@@ -155,6 +156,7 @@ return [
             'addQuantity' => 'Add quantity',
         ],
         'user' => [
+            'id' => 'ID',
             'username' => 'Username',
             'fullname' => 'Full name',
             'email' => 'Email',
@@ -162,6 +164,22 @@ return [
             'confirm-password' => 'Confirm Password',
             'phone' => 'Phone number',
             'address' => 'Address'
+        ],
+        'comment' => [
+            'id' => 'ID',
+            'book_id' => 'Book ID',
+            'user_id' => 'User ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'star' => 'Star',   
+        ],
+        'cart' => [
+            'tittle' => 'Book title',
+            'price' => 'Price',
+            'quantity' => 'Quantity',
+        ],
+        'order' => [
+            'delivery' => 'Delivery',
         ],
     ],
 

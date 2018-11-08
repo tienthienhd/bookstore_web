@@ -1,6 +1,6 @@
 <?php
 return [
-	/*
+    /*
     |--------------------------------------------------------------------------
     | Validation Language Lines
     |--------------------------------------------------------------------------
@@ -139,20 +139,22 @@ return [
     |
     */
 
-	'attributes' => [
+    'attributes' => [
         'book' => [
-    		'title' => 'Tên sách',
-    		'author' => 'Tên tác giả',
-    		'category' => 'Thể loại sách',
-    		'cover' => 'Ảnh bìa',
-    		'description' => 'Mô tả',
-    		'saleprice' => 'Giá bán',
-    		'purchasePrice' => 'Giá nhập vào',
-    		'state' => 'Trạng thái sách',
-            'bookId' => 'Sách nhập thêm',
+            'id' => 'Mã định danh',
+            'title' => 'Tên sách',
+            'author' => 'Tên tác giả',
+            'category' => 'Thể loại sách',
+            'cover' => 'Ảnh bìa',
+            'description' => 'Mô tả',
+            'saleprice' => 'Giá bán',
+            'purchasePrice' => 'Giá nhập vào',
+            'state' => 'Trạng thái sách',
+            'bookId' => 'Đầu sách nhập thêm',
             'addQuantity' => 'Lượng sách nhập thêm',
         ],
         'user' => [
+            'id' => 'Mã định danh',
             'username' => 'Tên người dùng',
             'fullname' => 'Tên đầy đủ',
             'email' => 'Địa chỉ hòm thư điện tử',
@@ -161,6 +163,22 @@ return [
             'phone' => 'Số điện thoại',
             'address' => 'Địa chỉ'
         ],
-	],
+         'comment' => [
+            'id' => 'Mã định danh',
+            'book_id' => 'Mã sách',
+            'user_id' => 'Mã khách hàng',
+            'title' => 'Tiêu đề đánh giá',
+            'description' => 'Nội dung đánh giá',
+            'star' => 'Số sao',   
+        ],
+        'cart' => [
+            'tittle' => 'Tên sách',
+            'price' => 'Giá',
+            'quantity' => 'Số lượng',
+        ],
+        'order' => [
+            'delivery' => 'Hình thức giao hàng',
+        ],
+    ],
 ];
 ?>
