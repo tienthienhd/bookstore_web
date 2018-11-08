@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\ChangePasswordRequest;
+use App\Http\Requests\UserRequest;
 use DateTime;
 
 class UserController extends Controller
@@ -19,7 +20,7 @@ class UserController extends Controller
      */
     public function getListStaff()
     {
-        //
+        echo 'alal';
     }
 
     /**
@@ -28,9 +29,23 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function addStaff(Request $request)
+    public function addStaff(UserRequest $request)
     {
-        //
+        $request->validated();
+
+        $user = new User;
+        $user->username = $request->username;
+        $user->fullname = $request->fullname;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->address = $request->address;
+        $user->password = Hash::make($request->password);
+        $user->role_id = config('auth.roles.sale-manager');
+        $user->avatar = 'sale_manager.png';
+
+        $user->save();
+        return redirect()->back()->with('status', __('messages.create-staff-account-successfully', 
+            ['account' => $user->username]));
     }
 
     /**
@@ -46,7 +61,8 @@ class UserController extends Controller
     }
 
     public function getListAccount(){
-
+        $accounts = User::where('role_id','<>',config('auth.roles.admin'))->get();
+        return view('admin.users.account', ['accounts' => $accounts]);
     }
 
     /**
@@ -55,16 +71,40 @@ class UserController extends Controller
      * @param  \App\User  $user
      * @return \Illuminate\Http\Response
      */
-    public function deleteAccount(User $user)
+    public function lockAccount(User $user)
     {
-        //
+        $user->role_id = config('auth.roles.locked');
+        $user->save();
+        return redirect()->back()->with('status', __('messages.locked-account-successfully', ['account' => $user->username]));
     }
 
+    public function unlockAccountCustomer(User $user){
+        $user->role_id = config('auth.roles.customer');
+        $user->save();
+        return redirect()->back()->with('status', __('messages.unlocked-account-successfully', 
+            ['account' => $user->username, 'role' => $user->role->title]));
+    }
+
+    public function unlockAccountManager(User $user){
+        $user->role_id = config('auth.roles.sale-manager');
+        $user->save();
+        return redirect()->back()->with('status', __('messages.unlocked-account-successfully', 
+            ['account' => $user->username, 'role' => $user->role->title]));
+    }
+    /**
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function getProfile(){
         $user = Auth::user();
         return view('users.profile', ['user'=>$user]);
     }
 
+    /**
+     * 
+     * @param  UpdateProfileRequest $request 
+     * @return \Illuminate\Http\Response
+     */
     public function updateProfile(UpdateProfileRequest $request){
         //  Validate the data
         $valid = $request->validated();
@@ -101,10 +141,19 @@ class UserController extends Controller
         return redirect()->back()->with('status', __('messages.update-profile-successfully'));
     }
 
+    /**
+     * 
+     * @return \Illuminate\Http\Response
+     */
     public function showChangePasswordForm(){
         return view('users.change-password');
     }
 
+    /**
+     * 
+     * @param  ChangePasswordRequest $request 
+     * @return \Illuminate\Http\Response
+     */
     public function changePassword(ChangePasswordRequest $request){
         $valid = $request->validated();
 

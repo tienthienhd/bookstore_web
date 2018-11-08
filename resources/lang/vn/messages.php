@@ -24,5 +24,9 @@ return [
 	'update-profile-successfully' => 'Cập nhật thông tin cá nhân thành công!',
 	'update-password-successfully' => 'Cập nhật mật khẩu thành công!',
 	'incorrect-password' => 'Nhập sai mật khẩu!',
+	'no-account-found' => 'Không có tài khoản nào!',
+	'locked-account-successfully' => 'Khóa tài khoản :account thành công!',
+	'unlocked-account-successfully' => 'Mở khóa tài khoản :account thành :role thành công!',
+	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
 ];
 ?>
