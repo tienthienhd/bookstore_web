@@ -29,6 +29,8 @@ return [
 	'change-password' => 'Change password',
 	'update-password' => 'Update password',
 	'update-profile' => 'Update profile',
+	'account-manage' => 'Account Manage',
+	'permission-manage' => 'Permission Manage',
 ];
 
 ?>
