@@ -42,7 +42,7 @@
             <div  class="custom_cover_imgae_space" ></div>
             <div class=" row justify-content-center custom_link_upload_cover" >
                 <a style="color: white" href="#" onclick="$('#cover').click();">{{__('btn.upload-cover')}}</a></div>
-            <input id="cover" type="file" style="display: none" class="form-control{{ $errors->has('title') ? ' is-invalid' : '' }}" name="cover" accept="image/*" >
+            <input id="cover" type="file" style="display: none" class="form-control{{ $errors->has('cover') ? ' is-invalid' : '' }}" name="cover" accept="image/*" >
 
             @if ($errors->has('cover'))
                 <span class="invalid-feedback" role="alert">

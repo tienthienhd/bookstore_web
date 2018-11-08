@@ -14,10 +14,8 @@ use App\Http\Controllers\OrderStateHistoryController;
 class OrderController extends Controller
 {
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * Add new order record
+     * @param OrderRequest $request 
      */
     public function addOrder(OrderRequest $request)
     {
@@ -80,14 +78,7 @@ class OrderController extends Controller
         $cartController->clearCart();
 
         //  Add order state history
-        $orderStateHistory = [
-            'order_id' => $order->id,
-            'state' => $order->state,
-            'title' => array_search($order->state,config('order-state')),
-            'description' => array_search($order->state,config('order-state'))
-        ];
-        $orderStateHistoryController = new OrderStateHistoryController;
-        $orderStateHistoryController->addOrderStateHistory($orderStateHistory);
+        $this->addOrderStateHistory($order);
 
         return redirect()->route('order.show',['order' => $order])
         ->with('status', __('messages.add-order-successfully'));
@@ -127,8 +118,10 @@ class OrderController extends Controller
         ]);
     }
 
-    public function getOrderStateHistory(){
-
+    public function getOrderStateHistory(Order $order){
+        $orderStateHistoryController = new OrderStateHistoryController;
+        $orderStateHistories = $orderStateHistoryController->getOrderStateHistory($order);
+        return view('orders.state-history' , ['orderStateHistories' => $orderStateHistories]);
     }
 
     /**
@@ -139,7 +132,22 @@ class OrderController extends Controller
      */
     public function cancelOrder(Order $order)
     {
-        //
+        if($order->state > config('order-state.canceled') 
+            && $order->state < config('order-state.ship-assigned')){
+
+            //  Update order state
+            $order->state = config('order-state.canceled');
+            $order->save();
+
+            //  Add order state history
+            $this->addOrderStateHistory($order);
+
+            return redirect()->back()->with('status', __('messages.cancel-order-successfully'));
+        }
+        $description = 'order-state.description.'.array_search($order->state,config('order-state'));
+        return redirect()->back()->withErrors(['cant-cancel'=> 
+            __('messages.cant-cancel-order', [
+                'description' => __($description)])]);
     }
 
     public function getOrderList(){
@@ -167,6 +175,17 @@ class OrderController extends Controller
 
     public function getListBuyed(){
 
+    }
+
+    public function addOrderStateHistory(Order $order){
+        $orderStateHistory = [
+            'order_id' => $order->id,
+            'state' => $order->state,
+            'title' => array_search($order->state,config('order-state')),
+            'description' => array_search($order->state,config('order-state'))
+        ];
+        $orderStateHistoryController = new OrderStateHistoryController;
+        $orderStateHistoryController->addOrderStateHistory($orderStateHistory);
     }
 
 }

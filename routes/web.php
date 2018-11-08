@@ -58,5 +58,17 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 		Route::post('/add', 'OrderController@addOrder')->name('order.add');
 		Route::get('/{order}', 'OrderController@getOrderMemberDetail')->name('order.show');
 		Route::get('/', 'OrderController@getOrderMemberList')->name('order.index');
+		Route::get('/{order}/state-history', 'OrderController@getOrderStateHistory')
+		->name('order.state-history')->middleware('owner');
+		Route::get('/{order}/cancel', 'OrderController@cancelOrder')
+		->name('order.cancel')->middleware('owner');
 	});	
 });
+
+Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'not-locked']], function(){
+	Route::get('/', 'UserController@getProfile')->name('user.profile');
+	Route::post('/', 'UserController@updateProfile')->name('user.update-profile');
+	Route::get('/password-change', 'UserController@showChangePasswordForm')->name('user.show.password-change');
+	Route::post('/password-change', 'UserController@changePassword')->name('user.password-change');
+});
+

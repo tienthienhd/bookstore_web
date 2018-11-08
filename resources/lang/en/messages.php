@@ -18,5 +18,11 @@ return [
 	'add-order-successfully' => 'Add order successfully!',
 	'select-a-delivery' => 'Sellect a delivery',
 	'no-order-found' => 'No order found!',
+	'no-data' => 'No data!',
+	'cancel-order-successfully' => 'Cancel order successfully!',
+	'cant-cancel-order' => 'You can not cancel this order! :description',
+	'update-profile-successfully' => 'Update profile successfully!',
+	'update-password-successfully' => 'Update password successfully!',
+	'incorrect-password' => 'Incorrect password!',
 ];
 ?>

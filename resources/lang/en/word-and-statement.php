@@ -16,6 +16,7 @@ return[
 		'multiplication' => 'Multiplication',
 		'total' => 'Total',
 	],
+	'profile' => 'Profile',
 ];
 
 ?>

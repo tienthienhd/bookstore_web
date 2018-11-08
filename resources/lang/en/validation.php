@@ -163,6 +163,7 @@ return [
             'password' => 'Password',
             'confirm-password' => 'Confirm Password',
             'phone' => 'Phone number',
+            'avatar' => 'Avatar',
             'address' => 'Address'
         ],
         'comment' => [
@@ -180,6 +181,10 @@ return [
         ],
         'order' => [
             'delivery' => 'Delivery',
+        ],
+        'change-password' => [
+            'new-password' => 'New password',
+            'confirm-new-password' => 'Confirm new password',
         ],
     ],
 
