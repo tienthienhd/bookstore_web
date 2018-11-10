@@ -10,6 +10,7 @@ use App\Http\Requests\UpdateProfileRequest;
 use App\Http\Requests\ChangePasswordRequest;
 use App\Http\Requests\UserRequest;
 use DateTime;
+use App\Http\Controllers\RolePermissionController;
 
 class UserController extends Controller
 {
@@ -20,7 +21,10 @@ class UserController extends Controller
      */
     public function getListStaff()
     {
-        echo 'alal';
+        $staffs = User::where('role_id','<>',config('auth.roles.admin'))
+        ->where('role_id','<>',config('auth.roles.customer'))
+        ->get();
+        return view('admin.users.staff', ['staffs' => $staffs]);
     }
 
     /**
@@ -57,7 +61,35 @@ class UserController extends Controller
      */
     public function updatePermission(Request $request, User $user)
     {
-        //
+        $inputPermissons = [];
+        if(isset($request->addNewBook)){
+            array_push($inputPermissons, $request->addNewBook);
+        }
+        if(isset($request->addOldBook)){
+            array_push($inputPermissons, $request->addOldBook);
+        }
+        if(isset($request->orderManage)){
+            array_push($inputPermissons, $request->orderManage);
+        }
+
+        $rolePermissionController = new RolePermissionController;
+        $rolePermissionArray = $rolePermissionController->getRolePermissionArray();
+        
+        if($inputPermissons == null){
+            $user->role_id = config('auth.roles.locked');
+            $user->save();
+            return redirect()->back()
+                ->with('status',  __('messages.locked-account-successfully', ['account' => $user->username]));
+        }
+
+        foreach ($rolePermissionArray as $roleId => $permissions) {
+            if(count($permissions) == count($inputPermissons) && array_diff($permissions,$inputPermissons) == null ){
+                $user->role_id = $roleId;
+                $user->save();
+                return redirect()->back()
+                ->with('status', __('messages.update-permission-successfully', ['username' => $user->username]));
+            }
+        }
     }
 
     public function getListAccount(){
