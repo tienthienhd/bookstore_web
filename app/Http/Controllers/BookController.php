@@ -56,15 +56,17 @@ class BookController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getBookDetail(Book $book){
-        $star = $book->comments()->avg('star');
-        return view('books.show', ['book' => $book, 'star' => $star]);
-
+        // Todo
+        //if manage để nguyên return về books.manage.show
+        //ngược lại bỏ bớt return về books.show
+        return view('manager.book.show', ['book' => $book]);
     }
 
     /**
      * @param SearchBookRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
+
     public function getBookListManage(SearchBookRequest $request){
         //  Validate the data
         $valid = $request->validated();
