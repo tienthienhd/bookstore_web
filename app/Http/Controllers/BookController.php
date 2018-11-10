@@ -12,6 +12,11 @@ use DateTime;
 
 class BookController extends Controller
 {
+    public function __construct(){
+        $this->middleware('add-new-book-staff')->only(['addNewBook','updateBook', 'stopSaleBook']);
+        $this->middleware('add-old-book-staff')->only('addOldBook');
+    }
+
     /**
      * 
      * @return mix
@@ -56,17 +61,15 @@ class BookController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getBookDetail(Book $book){
-        // Todo
-        //if manage để nguyên return về books.manage.show
-        //ngược lại bỏ bớt return về books.show
-        return view('manager.book.show', ['book' => $book]);
+        $star = $book->comments()->avg('star');
+        return view('books.show', ['book' => $book, 'star' => $star]);
+
     }
 
     /**
      * @param SearchBookRequest $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-
     public function getBookListManage(SearchBookRequest $request){
         //  Validate the data
         $valid = $request->validated();
@@ -294,5 +297,5 @@ class BookController extends Controller
                 )
              );
     }
-    
+
 }

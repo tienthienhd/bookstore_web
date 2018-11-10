@@ -80,4 +80,5 @@ Route::group(['prefix' => 'admin/user', 'middleware' => ['web', 'auth', 'admin']
 	Route::get('/account/{user}/unlock-to-manager', 'UserController@unlockAccountManager')->name('admin.user.account.unlock-manager');
 	Route::post('/account/add', 'UserController@addStaff')->name('admin.user.account.add');
 	Route::get('/permission-manage', 'UserController@getListStaff')->name('admin.user.permission-manage');
+	Route::put('/{user}/update-permission', 'UserController@updatePermission')->name('update-permission');
 });

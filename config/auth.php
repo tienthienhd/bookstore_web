@@ -104,6 +104,12 @@ return [
         'admin' => 2,
         'customer' => 3,
         'sale-manager' => 4,
+        'add-book-staff' => 5,
+        'add-new-book-staff' => 6,
+        'add-old-book-staff' => 7,
+        'order-manage' => 8,
+        'add-new-book-and-order-manage-staff' => 9,
+        'add-old-book-and-order-manage-staff' => 10,
     ],
 
 ];
