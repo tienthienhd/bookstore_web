@@ -8362,3 +8362,30 @@ span.notificationtime {
 	margin-top: 0px !important; 
 	color: #000000;
 }
+
+
+/*======================== image show =========================*/
+.img-thumbnail {
+    background-position: center center;
+    background-size: cover;
+    border: 2px solid white;
+    border-radius: 15px;
+}
+.custom_cover{
+    background-repeat: no-repeat; 
+    /*margin-left: 45px; */
+    width: 20%;
+    height: 200px
+}
+.custom_cover_imgae_space{
+    height: 50px
+}   
+.custom_link_upload_cover{
+    height: 95px;
+    background-color:rgba(0, 0, 0, 0.09); 
+    width:101%;
+    font-size: 32px;
+    padding-top: 40px;
+    margin-left: -5px;
+    border-radius: 15px;
+}

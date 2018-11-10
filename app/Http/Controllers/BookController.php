@@ -59,7 +59,7 @@ class BookController extends Controller
         // Todo
         //if manage để nguyên return về books.manage.show
         //ngược lại bỏ bớt return về books.show
-        return view('admin.book.show', ['book' => $book]);
+        return view('manager.book.show', ['book' => $book]);
     }
 
     /**
@@ -93,7 +93,7 @@ class BookController extends Controller
 
         $books = $books->paginate();
 
-        return view('admin.books.index')->with([
+        return view('manager.books.index')->with([
             'books' => $books,
             'searchId' => $searchId,
             'searchTitle' => $searchTitle,
@@ -110,7 +110,7 @@ class BookController extends Controller
     public function showAddBookForm()
     {
         $books = Book::all();
-        return view('admin.books.add', ['books' => $books]);
+        return view('manager.books.add', ['books' => $books]);
     }
 
     /**
@@ -201,7 +201,7 @@ class BookController extends Controller
      */
     public function showEditBookForm(Book $book)
     {
-        return view('admin.book.edit', ['book' => $book]);
+        return view('manager.books.edit', ['book' => $book]);
     }
 
     /**

@@ -29,7 +29,8 @@ Route::group(['prefix' => 'manager/book', 'middleware' => ['web', 'auth', 'manag
 	Route::get('/{book}/edit', 'BookController@showEditBookForm')->name('manager.book.edit');
 	Route::put('/{book}', 'BookController@updateBook')->name('manager.book.update');
 	Route::put('/{book}/stop-sale', 'BookController@stopSaleBook')->name('manager.book.update.off-state');
-});	
+});
+
 Route::group(['prefix' => 'customer/comment', 'middleware' => ['web', 'auth', 'customer']], function(){
 	Route::get('/', 'CommentController@getListCommentsOfMember')->name('customer.comment.index');
 	
