@@ -17,7 +17,7 @@ class IsAddNewBookStaff
     public function handle($request, Closure $next)
     {
         $user = Auth::user();
-        $permissions = $user->role->rolePermissions;
+        $rolePermissions = $user->role->rolePermissions;
         foreach ($rolePermissions as $rolePermission) {
             if ($rolePermission->permission_id == config('permission.add-new-book') ) {
                 return $next($request);

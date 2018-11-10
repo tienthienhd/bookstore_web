@@ -248,7 +248,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.show', ['book' => $book])
+        return redirect()->route('manager.book.show', ['book' => $book])
             ->with(
                 'status',
                  __(
