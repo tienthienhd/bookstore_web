@@ -15,6 +15,8 @@
                     @endif
 
                     You are logged in as admin!
+                    <a href="{{route('admin.user.account-list')}}">{{__('btn.account-manage')}}</a>
+                    <a href="{{route('admin.user.permission-manage')}}">{{__('btn.permission-manage')}}</a>
                 </div>
             </div>
         </div>

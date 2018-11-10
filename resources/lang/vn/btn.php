@@ -29,6 +29,8 @@ return [
 	'change-password' => 'Đổi mật khẩu',
 	'update-password' => 'Cập nhật mật khẩu',
 	'update-profile' => 'Cập nhật thông tin cá nhân',
+	'account-manage' => 'Quản lý tài khoản',
+	'permission-manage' => 'Quản lý quyền truy cập',
 ];
 
 ?>

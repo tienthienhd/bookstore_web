@@ -24,5 +24,9 @@ return [
 	'update-profile-successfully' => 'Update profile successfully!',
 	'update-password-successfully' => 'Update password successfully!',
 	'incorrect-password' => 'Incorrect password!',
+	'no-account-found' => 'No account found!',
+	'locked-account-successfully' => 'Locked :account successfully!',
+	'unlocked-account-successfully' => 'Unocked :account as :role successfully!',
+	'create-staff-account-successfully' => 'Create staff account for :account successfully!',
 ];
 ?>

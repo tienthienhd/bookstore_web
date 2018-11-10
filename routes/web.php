@@ -73,3 +73,11 @@ Route::group(['prefix' => 'profile', 'middleware' => ['web', 'auth', 'not-locked
 	Route::post('/password-change', 'UserController@changePassword')->name('user.password-change');
 });
 
+Route::group(['prefix' => 'admin/user', 'middleware' => ['web', 'auth', 'admin']], function(){
+	Route::get('/account-list', 'UserController@getListAccount')->name('admin.user.account-list');
+	Route::get('/account/{user}/lock', 'UserController@lockAccount')->name('admin.user.account.lock');
+	Route::get('/account/{user}/unlock-to-customer', 'UserController@unlockAccountCustomer')->name('admin.user.account.unlock-customer');
+	Route::get('/account/{user}/unlock-to-manager', 'UserController@unlockAccountManager')->name('admin.user.account.unlock-manager');
+	Route::post('/account/add', 'UserController@addStaff')->name('admin.user.account.add');
+	Route::get('/permission-manage', 'UserController@getListStaff')->name('admin.user.permission-manage');
+});
