@@ -71,15 +71,15 @@
                             <textarea class="mdl-textfield__input" rows="12" name="description" disabled>{{$book->description}}</textarea>
                         </div>
                         <div class="col-lg-12 p-t-20 text-center"> 
-                            <a class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" href="{{route('manager.book.edit', ['book' => $book])}}" style="color: #ffffff">{{__('btn.edit')}}</a>
+                            <a class="mdl-button m-b-10 m-r-20 btn-pink" href="{{route('manager.book.edit', ['book' => $book])}}" style="color: #ffffff">{{__('btn.edit')}}</a>
                             <form action="{{route('manager.book.update.off-state', ['book' => $book])}}" method="post">
                                 @csrf
                                 @method('put')
                                 @if($book->state < 0)
-                                    <input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="stopSaleBook" value="{{__('btn.stop-sale')}}" disabled="disabled">
-                                    <input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="reRtopSaleBook" value="{{__('btn.sale-again')}}">
+                                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="stopSaleBook" value="{{__('btn.stop-sale')}}" disabled="disabled">
+                                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="reRtopSaleBook" value="{{__('btn.sale-again')}}">
                                 @else
-                                    <input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="stopSaleBook" value="{{__('btn.stop-sale')}}">
+                                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="stopSaleBook" value="{{__('btn.stop-sale')}}">
                                 @endif
                             </form>
                            </div>

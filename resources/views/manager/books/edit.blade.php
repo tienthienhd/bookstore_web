@@ -89,7 +89,7 @@
                             </div>
                             
                             <div class="col-lg-12 p-t-20 text-center">
-                                <input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="editBook" value="{{__('btn.edit')}}">
+                                <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="editBook" value="{{__('btn.edit')}}">
                             </div>
                         </div>
                     </div>

@@ -83,33 +83,29 @@
                                 {{ session('status') }}
                             </div>
                         @endif 
-                        {{-- <a href="{{route('manager.book.create')}}">{{__('btn.add-book')}}</a> --}}
-                        
-                        <form action="{{route('manager.book.index')}}" method="get">
-                            <div class="row">
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <input type="text" class="form-control" name="searchId" value="{{ old('searchId') ?? $searchId ?? ''}}" placeholder="{{__('validation.attributes.book.id')}}">
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                                    <input type="text" class="form-control" name="searchTitle" value="{{ old('searchTitle') ?? $searchTitle ??''}}" placeholder="{{__('validation.attributes.book.title')}}">
-                                </div>
+                        <form class="row" action="{{route('manager.book.index')}}" method="get">
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input type="text" class="form-control" name="searchId" value="{{ old('searchId') ?? $searchId ?? ''}}" placeholder="{{__('validation.attributes.book.id')}}">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                                <input type="text" class="form-control" name="searchTitle" value="{{ old('searchTitle') ?? $searchTitle ??''}}" placeholder="{{__('validation.attributes.book.title')}}">
+                            </div>
 
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <input type="text" class="form-control" name="searchAuthor" value="{{ old('searchAuthor') ?? $searchAuthor ?? ''}}" placeholder="{{__('validation.attributes.book.author')}}">
-                                </div>
-                                <div class="col-lg-3 col-md-3 col-sm-3 col-3">
-                                    <select name='searchCategory' class="form-control">
-                                        <option value="">{{__('messages.select-a-category')}}</option>
-                                        @foreach ( config('book-category') as $category)
-                                            <option value="{{$category}}" {{ old('searchCategory') == $category || (isset($searchCategory) && $searchCategory == $category) ? 'selected' : ''}}>
-                                                {{__('book-category.'.$category)}}
-                                            </option>
-                                        @endforeach
-                                    </select>
-                                </div>
-                                <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                    <input type="submit" class="form-control" name="search" value="{{__('btn.search')}}">
-                                </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input type="text" class="form-control" name="searchAuthor" value="{{ old('searchAuthor') ?? $searchAuthor ?? ''}}" placeholder="{{__('validation.attributes.book.author')}}">
+                            </div>
+                            <div class="col-lg-3 col-md-3 col-sm-3 col-3">
+                                <select name='searchCategory' class="form-control">
+                                    <option value="">{{__('messages.select-a-category')}}</option>
+                                    @foreach ( config('book-category') as $category)
+                                        <option value="{{$category}}" {{ old('searchCategory') == $category || (isset($searchCategory) && $searchCategory == $category) ? 'selected' : ''}}>
+                                            {{__('book-category.'.$category)}}
+                                        </option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-lg-2 col-md-2 col-sm-2 col-2">
+                                <input type="submit" class="form-control" name="search" value="{{__('btn.search')}}">
                             </div>
                         </form>
 					    @if(isset($books))
@@ -117,13 +113,13 @@
                         <table class="table table-hover table-checkable order-column full-width" id="example4">
                             <thead>
                                 <tr>
-                                	<th class="center">@sortablelink('id', 'ID')</th>
-				    				<th class="center">@sortablelink('title', 'Title')</th>
-				    				<th class="center">@sortablelink('author', 'Author')</th>
-				    				<th class="center">@sortablelink('category', 'Category')</th>
-				    				<th class="center">@sortablelink('saleprice', 'Saleprice')</th>
-				    				<th class="center">@sortablelink('purchase_price', 'Purchase price')</th>
-				    				<th class="center">@sortablelink('state', 'State')</th>
+                                	<th class="center">@sortablelink('id', __('validation.attributes.book.id'))</th>
+				    				<th class="center">@sortablelink('title', __('validation.attributes.book.title'))</th>
+				    				<th class="center">@sortablelink('author', __('validation.attributes.book.author'))</th>
+				    				<th class="center">@sortablelink('category', __('validation.attributes.book.category'))</th>
+				    				<th class="center">@sortablelink('saleprice', __('validation.attributes.book.saleprice'))</th>
+				    				<th class="center">@sortablelink('purchase_price', __('validation.attributes.book.purchasePrice'))</th>
+				    				<th class="center">@sortablelink('state', __('validation.attributes.book.state'))</th>
 				    				<th class="center"> <a href="#"> Action </a></th>
                                 </tr>
                             </thead>
@@ -133,9 +129,9 @@
 										<td class="center">{{$book->id}}</td>
 										<td class="center">{{$book->title}}</td>
 										<td class="center">{{$book->author}}</td>
-										<td class="center">{{$book->category}}</td>
-										<td class="center">{{$book->saleprice}}</td>
-										<td class="center">{{$book->purchase_price}}</td>
+										<td class="center">{{__('book-category.'.$book->category)}}</td>
+										<td class="center">{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}</td>
+										<td class="center">{{__('word-and-statement.price', ['price' => number_format($book->purchase_price, 0, '.', '.')])}}</td>
 										<td class="center">
 											@if ($book->state > 0)
 												<span class="label label-sm label-success">{{$book->state}}</span>
