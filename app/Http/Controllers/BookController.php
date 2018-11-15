@@ -12,6 +12,11 @@ use DateTime;
 
 class BookController extends Controller
 {
+    public function __construct(){
+        $this->middleware('add-new-book-staff')->only(['addNewBook','updateBook', 'stopSaleBook']);
+        $this->middleware('add-old-book-staff')->only('addOldBook');
+    }
+
     /**
      * 
      * @return mix
@@ -243,7 +248,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.show', ['book' => $book])
+        return redirect()->route('manager.book.show', ['book' => $book])
             ->with(
                 'status',
                  __(
@@ -292,5 +297,5 @@ class BookController extends Controller
                 )
              );
     }
-    
+
 }

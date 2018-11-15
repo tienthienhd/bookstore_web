@@ -21,5 +21,13 @@ return [
 	'no-data' => 'Không có dữ liệu!',
 	'cancel-order-successfully' => 'Hủy đơn hàng thành công!',
 	'cant-cancel-order' => 'Bạn không thể hủy đơn hàng này! :description',
+	'update-profile-successfully' => 'Cập nhật thông tin cá nhân thành công!',
+	'update-password-successfully' => 'Cập nhật mật khẩu thành công!',
+	'incorrect-password' => 'Nhập sai mật khẩu!',
+	'no-account-found' => 'Không có tài khoản nào!',
+	'locked-account-successfully' => 'Khóa tài khoản :account thành công!',
+	'unlocked-account-successfully' => 'Mở khóa tài khoản :account thành :role thành công!',
+	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
+	'update-permission-successfully' => 'Cập nhật quyền của :username thành công!',
 ];
 ?>

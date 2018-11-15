@@ -130,33 +130,32 @@
                             <input type="submit" name="search" value="{{__('btn.search')}}">
                         </form>
 
-                        <form action="{{route(\Request::route()->getName())}}" method="get">
-                            {{__('word-and-statement.refine-by-category')}}:
-                            <select name='refineCategory'>
-                                <option value="">{{__('messages.select-a-category')}}</option>
-                                @foreach ( config('book-category') as $category)
-                                    <option value="{{$category}}" {{ old('refineCategory') == $category || (isset($refineCategory) && $refineCategory == $category) ? 'selected' : ''}}>
-                                        {{__('book-category.'.$category)}}
-                                    </option>
-                                @endforeach
-                            </select><br>
-                            <input type="submit" name="refine" value="{{__('btn.refine')}}">
-                        </form>
-                        @if(isset($books))
-                            @foreach($books as $book)
-                                <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
-                                {{$book->author}}
-                                {{__('book-category.'.$book->category)}}
-                                {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
-                                <br>
-                            @endforeach
-                            {{$books->links()}}
-                        @else
-                            {{__('messages.no-book-found')}}
-                        @endif
-                    </div>
+                <form action="{{route(\Request::route()->getName())}}" method="get">
+                    {{__('word-and-statement.refine-by-category')}}:
+                    <select name='refineCategory'>
+                        <option value="">{{__('messages.select-a-category')}}</option>
+                        @foreach ( config('book-category') as $category)
+                            <option value="{{$category}}" {{ old('refineCategory') == $category || (isset($refineCategory) && $refineCategory == $category) ? 'selected' : ''}}>
+                                {{__('book-category.'.$category)}}
+                            </option>
+                        @endforeach
+                    </select><br>
+                    <input type="submit" name="refine" value="{{__('btn.refine')}}">
+                </form>
+                @if(isset($books))
+                    @foreach($books as $book)
+                        <a href="{{route('book.show', ['book' => $book])}}">{{$book->title}}</a>
+                        {{$book->author}}
+                        {{__('book-category.'.$book->category)}}
+                        {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}<br>
+                    @endforeach
+                    {{$books->links()}}
+                @else
+                    {{__('messages.no-book-found')}}
+                @endif
                 </div>
             </div>
         </div>
     </div>
+</div>
 @endsection

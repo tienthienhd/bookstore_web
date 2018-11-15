@@ -14,6 +14,7 @@ return [
 	'stop-sale' => 'Ngừng kinh doanh',
 	'sale-again' => 'Kinh doanh trở lại',
 	'upload-cover' => 'Tải lên ảnh bìa sách',
+	'upload-avatar' => 'Tải lên ảnh đại diện',
 	'search' => 'Tìm kiếm',
 	'refine' => 'Lọc',
 	'add-to-card' => 'Thêm vào giỏ',
@@ -25,6 +26,11 @@ return [
 	'order-history' => 'Lịch sử mua hàng',
 	'order-state-history' => 'Lịch sử trạng thái đơn hàng',
 	'cancel' => 'Hủy',
+	'change-password' => 'Đổi mật khẩu',
+	'update-password' => 'Cập nhật mật khẩu',
+	'update-profile' => 'Cập nhật thông tin cá nhân',
+	'account-manage' => 'Quản lý tài khoản',
+	'permission-manage' => 'Quản lý quyền truy cập',
 ];
 
 ?>

@@ -21,5 +21,13 @@ return [
 	'no-data' => 'No data!',
 	'cancel-order-successfully' => 'Cancel order successfully!',
 	'cant-cancel-order' => 'You can not cancel this order! :description',
+	'update-profile-successfully' => 'Update profile successfully!',
+	'update-password-successfully' => 'Update password successfully!',
+	'incorrect-password' => 'Incorrect password!',
+	'no-account-found' => 'No account found!',
+	'locked-account-successfully' => 'Locked :account successfully!',
+	'unlocked-account-successfully' => 'Unocked :account as :role successfully!',
+	'create-staff-account-successfully' => 'Create staff account for :account successfully!',
+	'update-permission-successfully' => 'Update permissions of :username successfully!',
 ];
 ?>

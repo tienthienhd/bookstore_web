@@ -13,6 +13,9 @@ use App\Http\Controllers\OrderStateHistoryController;
 
 class OrderController extends Controller
 {
+     public function __construct(){
+        $this->middleware('order-manage')->only([]);
+    }
     /**
      * Add new order record
      * @param OrderRequest $request 
