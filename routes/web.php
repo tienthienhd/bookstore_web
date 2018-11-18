@@ -42,7 +42,20 @@ Route::group(['prefix' => 'customer/comment', 'middleware' => ['web', 'auth', 'c
 	Route::get('{comment}/edit', 'CommentController@showEditForm')->name('customer.comment.edit');
 	Route::post('/{comment}', 'CommentController@updateComment')->name('customer.comment.update');
 });
+Route::group(['prefix' => 'manager/order', 'middleware' => ['web', 'auth', 'manager']], function(){
+	Route::get('/', 'OrderController@getOrderList')->name('manager.order.list');
+	Route::get('/{order}', 'OrderController@getOrderDetail')->name('manager.order.detail');
+	Route::get('/{order}/cancel', 'OrderController@cancelManager')->name('manager.order.cancel');
+	Route::get('/{order}/updatestate', 'OrderController@showUpdateStateForm')->name('manager.order.updatestate');
+	Route::get('/edit/{order}', 'OrderController@updateOrderState')->name('manager.order.editstate');
 
+
+
+
+
+	
+
+});
 
 Route::get('/book/{book}', 'BookController@getBookDetail')->name('book.show')
 ->middleware(['not-admin', 'not-manager', 'not-locked']);

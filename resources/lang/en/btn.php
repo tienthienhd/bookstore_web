@@ -31,6 +31,8 @@ return [
 	'update-profile' => 'Update profile',
 	'account-manage' => 'Account Manage',
 	'permission-manage' => 'Permission Manage',
+	'update-state-order' => 'Update State Order',
+	
 ];
 
 ?>

@@ -28,6 +28,6 @@ return [
 	'locked-account-successfully' => 'Locked :account successfully!',
 	'unlocked-account-successfully' => 'Unocked :account as :role successfully!',
 	'create-staff-account-successfully' => 'Create staff account for :account successfully!',
-	'update-permission-successfully' => 'Update permissions of :username successfully!',
+	'messages.edit-order-successfully' => 'Update order state successfully',
 ];
 ?>
