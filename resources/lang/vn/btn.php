@@ -31,6 +31,7 @@ return [
 	'update-profile' => 'Cập nhật thông tin cá nhân',
 	'account-manage' => 'Quản lý tài khoản',
 	'permission-manage' => 'Quản lý quyền truy cập',
+	'update-state-order' => 'Cập nhật trạng thái đơn hàng',
 ];
 
 ?>

@@ -28,6 +28,6 @@ return [
 	'locked-account-successfully' => 'Khóa tài khoản :account thành công!',
 	'unlocked-account-successfully' => 'Mở khóa tài khoản :account thành :role thành công!',
 	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
-	'update-permission-successfully' => 'Cập nhật quyền của :username thành công!',
+	'messages.edit-order-successfully' => 'Cập nhật trạng thái đơn hàng thành công',
 ];
 ?>

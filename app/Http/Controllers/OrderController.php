@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Order;
 use App\Models\Book;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Requests\OrderRequest;
 use Illuminate\Support\Facades\Auth;
@@ -13,9 +14,6 @@ use App\Http\Controllers\OrderStateHistoryController;
 
 class OrderController extends Controller
 {
-     public function __construct(){
-        $this->middleware('order-manage')->only([]);
-    }
     /**
      * Add new order record
      * @param OrderRequest $request 
@@ -152,16 +150,84 @@ class OrderController extends Controller
             __('messages.cant-cancel-order', [
                 'description' => __($description)])]);
     }
+    public function cancelManager(Order $order)
+    {
+        
+            //  Update order state
+            $order->state = config('order-state.canceled');
+            $order->save();
 
-    public function getOrderList(){
+            //  Add order state history
+            $this->addOrderStateHistory($order);
 
+            return redirect()->back()->with('status', __('messages.cancel-order-successfully'));
+        
+       
     }
 
-    public function searchOrder(){
+
+
+
+    public function getOrderList(Request $request){
+        $orders = Order::orderBy('created_at', 'desc')->paginate();
+        $keyId = $request->searchId;
+        $keyName = $request->searchName;
+        $keyPhone= $request->searchPhone;
+        if($keyId != ''){
+           
+        $orders = Order::where('id',$keyId)->paginate();
+        }
+      
+        if($keyName != ''){
+        
+        $orders = Order::WhereIn('user_id', function($q) use ($keyName){
+            $q->select('id')->from('users')->where('fullname','like', '%' . $keyName . '%');
+        })->get();
+        }
+        if($keyPhone != ''){
+        
+        $orders = Order::WhereIn('user_id', function($q) use ($keyPhone){
+            $q->select('id')->from('users')->where('phone','=',$keyPhone);
+        })->get();
+        }
+       
+        
+        return view('manager.order.list')->with([
+            'orders' => $orders,
+          
+           
+        ]);
 
     }
+    
+   
 
-    public function getOrderDetail(){
+
+
+    public function searchOrder(Request $request){
+        
+    }
+
+    public function getOrderDetail(Order $order){
+        $multiplications = [];
+        foreach ($order->orderDetails as $orderDetail) {
+            $multiplications[$orderDetail->id] = 
+            $orderDetail->quantity * $orderDetail->book->saleprice;
+        }
+        $total = array_sum($multiplications);
+        $deliveryType = array_search($order->delivery,config('delivery.types'));
+        $deliveryFees = config('delivery.fees.'.$deliveryType);
+        $total += $deliveryFees;
+        $orderState = array_search($order->state,config('order-state'));
+        return view('manager.order.detail', [
+            'order' => $order, 
+            'deliveryType' => $deliveryType,
+            'deliveryFees' => $deliveryFees,
+            'total' => $total,
+            'multiplications' => $multiplications,
+            'orderState' => $orderState,
+        ]);
+        
 
     }
     /**
@@ -171,9 +237,25 @@ class OrderController extends Controller
      * @param  \App\Models\Order  $order
      * @return \Illuminate\Http\Response
      */
+    public function showUpdateStateForm(Order $order){
+         $orderState = array_search($order->state,config('order-state'));
+        return view('manager.order.UpdateState', [ 'order' => $order, 'orderState' => $orderState]);
+
+    }
     public function updateOrderState(Request $request, Order $order)
     {
-        //
+
+            //  Update order state
+            $order->state = $request->orderState;
+            $order->save();
+
+            //  Add order state history
+            $this->addOrderStateHistory($order);
+
+            return redirect()->route('manager.order.detail',[ 'order' => $order])->with('status', __('messages.edit-order-successfully'));
+        
+        
+        
     }
 
     public function getListBuyed(){
