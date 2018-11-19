@@ -80,7 +80,7 @@
 	                </a>
 	                <ul class="sub-menu">
 	                    <li class="nav-item">
-	                        <a href="new_booking.html" class="nav-link ">
+	                        <a href="{{ route('manager.order.list') }}" class="nav-link ">
 	                            <span class="title">List Orders</span>
 	                        </a>
 	                    </li>
