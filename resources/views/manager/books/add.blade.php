@@ -84,7 +84,7 @@
 			                </div>
 			                
 			                <div class="col-lg-12 p-t-20 text-center">
-			                    <input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="addBook" value="{{__('btn.add-book')}}">
+			                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="addBook" value="{{__('btn.add-book')}}">
 			                </div>
 			            </div>
 					</form>
@@ -118,7 +118,7 @@
 							</div>
 							<br>
 							<div class="col-lg-12 p-t-20 text-center">
-								<input class="mdl-button mdl-js-ripple-effect m-b-10 m-r-20 btn-pink" type="submit" name="addOldBook" value="{{__('btn.add-book')}}">
+								<input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="addOldBook" value="{{__('btn.add-book')}}">
 							</div>
 						</div>
 					</form>

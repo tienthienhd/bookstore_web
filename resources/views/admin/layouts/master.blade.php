@@ -68,13 +68,13 @@
 <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
 	<div class="page-wrapper">
 		<!-- start header -->
-		@include('manager.components.header')
+		@include('admin.components.header')
 		<!-- end header -->
 
 		<!-- start page container -->
 		<div class="page-container">
 			<!-- start sidebar menu -->
-			@include('manager.components.sidebar')
+			@include('admin.components.sidebar')
 			<!-- end sidebar menu -->
 
 			<!-- start page content -->
@@ -82,13 +82,13 @@
 			<!-- end page content -->
 
 			<!-- start chat sidebar -->
-			@include('manager.components.chat_sidebar')
+			@include('admin.components.chat_sidebar')
 			<!-- end chat sidebar -->
 		</div>
 		<!-- end page container -->
 
         <!-- start footer -->
-        @include('manager.components.footer')
+        @include('admin.components.footer')
 		<!-- end footer -->
 	</div>
 </body>
