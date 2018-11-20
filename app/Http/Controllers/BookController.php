@@ -9,6 +9,7 @@ use App\Http\Requests\OldBookRequest;
 use App\Http\Requests\EditBookRequest;
 use App\Http\Requests\SearchBookRequest;
 use DateTime;
+use App\Http\Controllers\OrderDetailController;
 
 class BookController extends Controller
 {
@@ -296,6 +297,16 @@ class BookController extends Controller
                     ['id' => $book->id]
                 )
              );
+    }
+
+    public function getHotBooks(){
+        $orderDetailController = new OrderDetailController;
+        $hotBooks = $orderDetailController->getHotBooks();
+        return $hotBooks;
+        // foreach ($hotBooks as $hotBook) {
+        //     print_r($hotBook->book->title);
+        //     print_r($hotBook->sum);
+        //}
     }
 
 }

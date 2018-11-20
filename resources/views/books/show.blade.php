@@ -1,5 +1,9 @@
 @extends('layouts.app')
+
+@section('cssFile')
 <link href="{{ asset('css/book.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
