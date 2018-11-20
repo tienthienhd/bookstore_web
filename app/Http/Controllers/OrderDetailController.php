@@ -23,4 +23,17 @@ class OrderDetailController extends Controller
     {
         //
     }
+
+    /**
+     * getHotBooks description
+     * @return collection $hotBooks
+     */
+    public function getHotBooks(){
+        $hotBooks = OrderDetail::groupBy('book_id')
+            ->selectRaw('sum(quantity) as sum, book_id')->get();
+        $hotBooks = $hotBooks->sortByDesc('sum');
+        $hotBooks = $hotBooks->slice(0, 10);
+        $hotBooks->all();
+        return $hotBooks;
+    }
 }

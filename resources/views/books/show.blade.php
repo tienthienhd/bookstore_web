@@ -1,5 +1,9 @@
 @extends('layouts.app')
+
+@section('cssFile')
 <link href="{{ asset('css/book.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     @if (session('status'))
         <div class="alert alert-success" role="alert">
@@ -24,12 +28,13 @@
                 <div class="col-md-8">
                     <h4>{{$book->title}}</h4>
                     <div class="star-rated">
+                        @for($i=0; $i<round($star); $i++)
                         <i class="material-icons checked">grade</i>
-                        <i class="material-icons checked">grade</i>
-                        <i class="material-icons checked">grade</i>
+                        @endfor
+                        @for($j=5; $j>round($star); $j--)
                         <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
-                        <span>(50 đánh giá)</span>
+                        @endfor
+                        <span>({{$star/1}}/5 - {{$countComment}} đánh giá)</span>
                     </div>
                     <div class="price">
                         {{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}
@@ -40,24 +45,8 @@
                             <td>{{$book->author}}</td>
                         </tr>
                         <tr>
-                            <th>Nhà xuất bản:</th>
-                            <td>dsfsdf</td>
-                        </tr>
-                        <tr>
-                            <th>Kích thước:</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Loại bìa:</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>Số trang:</th>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <th>SKU:</th>
-                            <td></td>
+                            <th>Thể loại:</th>
+                            <td>{{__('book-category.'.$book->category)}}</td>
                         </tr>
                     </table>
                     <form action="{{route('cart.add')}}" method="post">
@@ -77,52 +66,31 @@
             <br>
             <h5>ĐÁNH GIÁ</h5>
             <div class="row review">
-                <div class="row review-item">
-                    <div class="col-md-2">
-                        <img src="https://cdn3.iconfinder.com/data/icons/emoticons-23/64/_Ninja-512.png">
-                    </div>
-                    <div class="col-md-7">
-                        <h6>Sasuke</h6>
-                        <p>Japan</p>
-                    </div>
-                    <div class="col-md-3">
-                        <i class="material-icons checked">grade</i>
-                        <i class="material-icons checked">grade</i>
-                        <i class="material-icons checked">grade</i>
-                        <i class="material-icons">grade</i>
-                        <i class="material-icons">grade</i>
-                    </div>
-                    <p style="margin: 1em 3em 1em 3em">blaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaasssssssaaaaaaaaaaaaaaaa</p>
-                </div>
-            </div>
-            <h5 style="margin: 1em 0 1em 0">VIẾT NHẬN XÉT</h5>
-            <div class="row write-review">
-                <form>
-                    <div class="form-group row">
-                        <label  class="col-sm-2 col-form-label">Đánh giá của bạn</label>
-                        <div class="col-sm-10">
-                            <fieldset class="rating">
-                                <input type="radio" id="star5" name="rating" value="5" /><label for="star5" title="Rocks!">5 stars</label>
-                                <input type="radio" id="star4" name="rating" value="4" /><label for="star4" title="Pretty good">4 stars</label>
-                                <input type="radio" id="star3" name="rating" value="3" /><label for="star3" title="Meh">3 stars</label>
-                                <input type="radio" id="star2" name="rating" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-                                <input type="radio" id="star1" name="rating" value="1" /><label for="star1" title="Sucks big time">1 star</label>
-                            </fieldset>
+                    @if(isset($comments) && count($comments)>0)
+                        @foreach($comments as $comment)
+                        <div class="row review-item">
+                            <div class="col-md-2">
+                                <img src="{{asset("img/avatars/" . $comment->user->avatar)}}">
+                            </div>
+                            <div class="col-md-7">
+                                <h6>{{$comment->user->username}}</h6>
+                                <p>{{$comment->created_at}}</p>
+                            </div>
+                            <div class="col-md-3">
+                                @for($i=0; $i<round($comment->star); $i++)
+                                <i class="material-icons checked">grade</i>
+                                @endfor
+                                @for($j=5; $j>round($comment->star); $j--)
+                                <i class="material-icons">grade</i>
+                                @endfor
+                            </div>
+                            <p style="margin: 1em 3em 1em 3em"><b>{{$comment->title}}</b></p>
+                            <p style="margin: 1em 3em 1em 3em">{{$comment->description}}</p>
                         </div>
-                    </div>
-                    <div class="form-group row">
-                        <label for="inputPassword3" class="col-sm-2 col-form-label">Nhận xét</label>
-                        <div class="col-sm-10">
-                            <textarea type="text" class="form-control"> </textarea>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <div class="col-sm-10 offset-2">
-                            <button type="submit" class="btn btn-outline-info">Nhận xét</button>
-                        </div>
-                    </div>
-                </form>
+                        @endforeach
+                    @else
+                        {{__('Không có đánh giá nào')}}
+                    @endif
             </div>
         </div>
     @endif

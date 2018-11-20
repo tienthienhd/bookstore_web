@@ -45,7 +45,7 @@ class Book extends Model
     /**
      * @var int
      */
-    protected $perPage = 10;
+    protected $perPage = 12;
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany

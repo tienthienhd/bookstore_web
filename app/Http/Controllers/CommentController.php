@@ -21,7 +21,7 @@ class CommentController extends Controller
     {
 
     	$comments = Comment::where('book_id',$bookId)->orderBy('created_at')->paginate();
-    	return view('books.comment', ['cmt'=>$comments]);
+    	return $comments;
     }
 
     public function getListWaitForComment(){

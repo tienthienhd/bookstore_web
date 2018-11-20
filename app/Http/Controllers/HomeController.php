@@ -42,10 +42,12 @@ class HomeController extends Controller
         }else{
             $books = $this->bookController->getListBooksForHomePage();
         }
+        $hotBooks = $this->bookController->getHotBooks();
         return view('home', [
             'books' => $books, 
             'refineCategory' => $refineCategory,
             'searchString' => $searchString,
+            'hotBooks' => $hotBooks,
         ]);
     }
 

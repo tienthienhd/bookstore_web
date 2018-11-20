@@ -20,7 +20,9 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/find-book-select.css') }}" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    @yield('cssFile')
 </head>
 <body>
 <div id="app">
@@ -38,22 +40,37 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav mr-auto">
-                    <div class="dropdown">
-                        <button type="button" class="book-genre dropdown-toggle" data-toggle="dropdown">
-                            THỂ LOẠI
-                        </button>
-                        <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Link 1</a>
-                            <a class="dropdown-item" href="#">Link 2</a>
-                            <a class="dropdown-item" href="#">Link 3</a>
-                        </div>
-                    </div>
+                    @guest
+                        <form action="{{route('welcome')}}" method="get">
+                    @else
+                        <form action="{{route('home')}}" method="get">
+                    @endguest
+                        <select name='refineCategory' onchange="refineCategoryFunction()" class="refine-category">
+                            <option value="">{{__('messages.select-a-category')}}</option>
+                            @foreach ( config('book-category') as $category)
+                                <option class="dropdown-item" value="{{$category}}" {{ old('refineCategory') == $category || (isset($refineCategory) && $refineCategory == $category) ? 'selected' : ''}}>
+                                    {{__('book-category.'.$category)}}
+                                </option>
+                            @endforeach
+                        </select>
+                        
+                        <input type="submit" name="refine" id="refineBtn" value="{{__('btn.refine')}}" style="display: none">
+                    </form>
                 </ul>
-
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item" ><input style="width: 18rem" class="search" type="text" placeholder="Tìm kiếm sách/tác giả"></li>
-                    <li class="nav-item"><button class="material-icons search">search</button></li>
-                </ul>
+                @guest
+                    <form action="{{route('welcome')}}" method="get">
+                @else
+                    <form action="{{route('home')}}" method="get">
+                @endguest
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item" >
+                            <input style="width: 18rem" class="search" type="text" placeholder="{{__('validation.attributes.book.title')}} {{__('word-and-statement.or')}} {{__('validation.attributes.book.author')}}"  name="searchString" id="searchString" value="{{ old('searchString') ?? $searchString ??''}}">
+                        </li>
+                        <li class="nav-item">
+                            <button class="material-icons search" type="submit" id="searchBtn">search</button>
+                        </li>
+                    </ul>
+                </form>
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -66,7 +83,7 @@
                     <li class="nav-item">
                         <a href="{{route('cart.index')}}">
                             <i class="material-icons">shopping_cart</i>
-                            <div class="number-noti">1</div>
+                            <div class="number-noti">{{$countCart}}</div>
                             <span style="left: -10px">Giỏ hàng</span>
                         </a>
                     </li>
@@ -95,7 +112,9 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-
+                            <a class="dropdown-item" href="{{route('order.index')}}" title="">
+                                {{__('btn.order-history')}}
+                            </a>
                             <a class="dropdown-item" href="{{route('customer.waitcommentlist')}}"
                                title=""> {{__('word-and-statement.wait-comment')}} </a>
                             <a class="dropdown-item" href="{{route('customer.comment.index')}}"
@@ -123,5 +142,8 @@
 
     </footer>
 </div>
+<script type="text/javascript" src="{{asset('js/submit-search-on-enter.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/submit-refine.js')}}"></script>
+@yield('jsFile')
 </body>
 </html>
