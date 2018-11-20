@@ -10,6 +10,7 @@ use App\Http\Requests\EditBookRequest;
 use App\Http\Requests\SearchBookRequest;
 use DateTime;
 use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\CommentController;
 
 class BookController extends Controller
 {
@@ -63,7 +64,16 @@ class BookController extends Controller
      */
     public function getBookDetail(Book $book){
         $star = $book->comments()->avg('star');
-        return view('books.show', ['book' => $book, 'star' => $star]);
+        $countComment = $book->comments()->count();
+        $commentController = new CommentController;
+        $comments = $commentController->getCommentsOfBook($book->id);
+        return view('books.show', 
+            [
+                'book' => $book,
+                'star' => $star, 
+                'countComment' => $countComment,
+                'comments' => $comments,
+             ]);
 
     }
 
