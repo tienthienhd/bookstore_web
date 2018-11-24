@@ -48,13 +48,14 @@ Route::group(['prefix' => 'manager/order', 'middleware' => ['web', 'auth', 'mana
 	Route::get('/{order}/cancel', 'OrderController@cancelManager')->name('manager.order.cancel');
 	Route::get('/{order}/updatestate', 'OrderController@showUpdateStateForm')->name('manager.order.updatestate');
 	Route::get('/edit/{order}', 'OrderController@updateOrderState')->name('manager.order.editstate');
+});
 
-
-
-
-
+Route::group(['prefix' => 'manager/report', 'middleware' => ['web', 'auth', 'manager']], function(){
+	Route::get('/', 'ReportController@showReportForm')->name('manager.report.index');
+	Route::get('/revenue', 'ReportController@getRevenueReport')->name('manager.report.revenue');
+	Route::get('/profit', 'ReportController@getProfitReport')->name('manager.report.profit');
+	Route::get('/inventory', 'ReportController@getInventoryReport')->name('manager.report.inventory');
 	
-
 });
 
 Route::get('/book/{book}', 'BookController@getBookDetail')->name('book.show')

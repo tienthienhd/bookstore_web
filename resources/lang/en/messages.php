@@ -28,6 +28,7 @@ return [
 	'locked-account-successfully' => 'Locked :account successfully!',
 	'unlocked-account-successfully' => 'Unocked :account as :role successfully!',
 	'create-staff-account-successfully' => 'Create staff account for :account successfully!',
-	'messages.edit-order-successfully' => 'Update order state successfully',
+	'edit-order-successfully' => 'Update order state successfully',
+	'no-report-found' => 'No data!',
 ];
 ?>
