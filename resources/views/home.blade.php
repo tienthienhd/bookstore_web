@@ -54,7 +54,7 @@
                                                 <td><img src="{{asset("img/covers/" . $book->cover)}}"></td>
                                                 <td>
                                                     <h6>{{$book->title}}</h6>
-                                                    <span>{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}</span>
+                                                    <span style="color: red">{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}</span>
                                                 </td>
                                             </tr>
                                         </table>
@@ -87,7 +87,7 @@
                                                 <td><img src="{{asset("img/covers/" . $hotBook->book->cover)}}"></td>
                                                 <td>
                                                     <h6>{{$hotBook->book->title}}</h6>
-                                                    <span>{{__('word-and-statement.price', ['price' => number_format($hotBook->book->saleprice, 0, '.', '.')])}}</span>
+                                                    <span style="color: red">{{__('word-and-statement.price', ['price' => number_format($hotBook->book->saleprice, 0, '.', '.')])}}</span>
                                                 </td>
                                             </tr>
                                         </table>
