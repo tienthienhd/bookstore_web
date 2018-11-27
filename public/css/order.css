@@ -1,0 +1,13 @@
+.main-content {
+    margin: 2rem 0 2rem 0;
+}
+ .order img {
+     width: 3em;
+     height: 4em;
+     object-fit: cover;
+     margin: 1em;
+ }
+.order a{
+    display: block;
+    float: right;
+}
