@@ -130,3 +130,9 @@
 	    </div>
 	</div>
 </div>
+
+
+
+Tên người dùng: {{Auth::user()->username}}
+Avatar: <img src="{{ asset('img/avatars').'/'.Auth::user()->avatar }}">
+Role: {{Auth::user()->role->title}}
