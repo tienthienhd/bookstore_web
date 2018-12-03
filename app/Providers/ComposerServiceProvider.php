@@ -15,6 +15,7 @@ class ComposerServiceProvider extends ServiceProvider
     public function boot()
     {
         View::composer('*', 'App\Http\ViewComposers\GetCountCartViewComposer');
+        View::composer(['admin.home', 'manager.home'], 'App\Http\ViewComposers\GetManageHomeViewComposer');
     }
 
     /**

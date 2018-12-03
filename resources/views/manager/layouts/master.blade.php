@@ -64,6 +64,7 @@
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/responsive.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('assets/css/theme-color.css') }}" rel="stylesheet" type="text/css" />
+    @yield('cssFile')
 </head>
 <body class="page-header-fixed sidemenu-closed-hidelogo page-content-white page-md header-white dark-sidebar-color logo-dark">
 	<div class="page-wrapper">
