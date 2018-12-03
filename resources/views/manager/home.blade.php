@@ -25,3 +25,36 @@
     </div>
 </div>
 @endsection
+
+@section('cssFile')
+<link href="{{ asset('css/book.css') }}" rel="stylesheet">
+@endsection
+
+
+
+số lượng khách hàng: {{$countCustomer}}
+số lượng sách: {{$countBook}}
+số lượng thể loại: {{$countCategory}}
+sô lượng đơn hàng: {{$countOrder}} 
+số lượng sách theo từng thể loại:
+    @foreach($countBookByCategory as $cat => $bkcount)
+        {{$cat}} : {{ $bkcount}}
+    @endforeach
+doanh thu theo thời gian (chưa có) 
+time line các sự kiện:
+    @foreach($ordersStateHistories as $orderStateHistory)
+        {{$orderStateHistory->created_at}} : đơn hàng mã {{$orderStateHistory->order_id}} của khách hàng {{$orderStateHistory->order->user->username}} vừa được cập nhật trạng thái {{$orderStateHistory->title}}
+    @endforeach
+danh sách các đánh giá:
+    @foreach($comments as $comment)
+        <img src="{{ asset('img/avatars').'/'.$comment->user->avatar }}">
+        {{$comment->user->username}}
+        {{$comment->title}}
+        @for($i=0; $i<round($comment->star); $i++)
+        <i class="material-icons checked">grade</i>
+        @endfor
+        @for($j=5; $j>round($comment->star); $j--)
+        <i class="material-icons">grade</i>
+        @endfor
+    @endforeach
+
