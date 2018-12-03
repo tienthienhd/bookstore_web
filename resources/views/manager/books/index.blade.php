@@ -105,7 +105,7 @@
                                 </select>
                             </div>
                             <div class="col-lg-2 col-md-2 col-sm-2 col-2">
-                                <input type="submit" class="form-control" name="search" value="{{__('btn.search')}}">
+                                <input type="submit" class="form-control label label-primary" name="search" value="{{__('btn.search')}}">
                             </div>
                         </form>
 					    @if(isset($books))
@@ -145,6 +145,9 @@
 											<a href="{{route('manager.book.show',['bookId' => $book->id])}}">
 												<span class="label label-sm lable-info"><i class="fa fa-info-circle"> Detail</i></span>
 											</a>
+                                            {{-- <a href="{{route('manager.book.edit', ['book' => $book])}}" class="btn btn-tbl-edit btn-xs">
+                                                <i class="fa fa-pencil"></i>
+                                            </a> --}}
 										</td>
 									</tr>
 						    	@endforeach				
