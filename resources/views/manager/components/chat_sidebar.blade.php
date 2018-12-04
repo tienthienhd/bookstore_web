@@ -5,10 +5,7 @@
                 <a href="#quick_sidebar_tab_1" class="nav-link active tab-icon"  data-toggle="tab">Theme
                     </a>
             </li>
-            <li class="nav-item">
-                <a href="#quick_sidebar_tab_2" class="nav-link tab-icon"  data-toggle="tab"> Chat
-                    </a>
-            </li>
+
             <li class="nav-item">
                 <a href="#quick_sidebar_tab_3" class="nav-link tab-icon"  data-toggle="tab">  Settings
                 </a>

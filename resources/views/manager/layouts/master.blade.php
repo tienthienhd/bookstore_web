@@ -19,6 +19,11 @@
     <script src="{{ asset('assets/plugins/bootstrap/js/bootstrap.min.js') }}" defer></script>
     <script src="{{ asset('assets/plugins/sparkline/jquery.sparkline.min.js') }}" defer></script>
 	<script src="{{ asset('assets/js/pages/sparkline/sparkline-data.js') }}" defer></script>
+
+    <!-- timeline -->
+    <script src="{{ asset('assets/js/pages/timeline/timeline.js') }}" defer></script>
+    <script src="{{ asset('assets/plugins/modernizr/modernizr.min.js') }}" defer></script>
+
     <!-- Common js-->
 	<script src="{{ asset('assets/js/app.js') }}" defer></script>
     <script src="{{ asset('assets/js/layout.js') }}" defer></script>
@@ -47,6 +52,9 @@
 
 	<!-- morris chart -->
     <link href="{{ asset('assets/plugins/morris/morris.css') }}" rel="stylesheet" type="text/css" />
+
+    <!-- timeline -->
+    <link rel="stylesheet" href="{{ asset('assets/css/pages/timeline.css') }}">
 
     <!-- Material Design Lite CSS -->
 	<link rel="stylesheet" href="{{ asset('assets/plugins/material/material.min.css') }}">
