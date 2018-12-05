@@ -29,6 +29,6 @@ return [
 	'unlocked-account-successfully' => 'Mở khóa tài khoản :account thành :role thành công!',
 	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
 	'edit-order-successfully' => 'Cập nhật trạng thái đơn hàng thành công',
-	'no-report-found' => 'Không có dữ liệu',
+	'update-permission-successfully' => 'Cập nhật quyền truy cập thành công!',
 ];
 ?>
