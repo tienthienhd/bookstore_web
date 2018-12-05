@@ -6,16 +6,20 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Dashboard</div>
+
                 <div class="card-body">
                     @if (session('status'))
                         <div class="alert alert-success" role="alert">
                             {{ session('status') }}
                         </div>
                     @endif
+
                     You are logged in as sale manager!
+
                     <a href="{{route('manager.book.index')}}">{{__('btn.book-manage')}}</a>
                     <a href="{{ route('manager.order.list')}}">{{__('btn.order-manage')}}</a>
                     <a href="">{{__('btn.report-manage')}}</a>
+
                     <!-- start widget -->
                     <div class="state-overview">
                         <div class="row">
@@ -94,6 +98,7 @@
                           </div>
                         </div>
                     <!-- end widget -->
+
                 </div>
             </div>
         </div>
@@ -199,8 +204,10 @@
                                     ['{{$cat}}',{{ $bkcount}}],
                                 @endforeach
                             ]);
+
                               // Optional; add a title and set the width and height of the chart
                               var options = {};
+
                               // Display the chart inside the <div> element with id="piechart"
                               var chart = new google.visualization.PieChart(document.getElementById('category_chart'));
                               chart.draw(data, options);
@@ -300,3 +307,5 @@ time line các sự kiện:
 danh sách các đánh giá:
 --}}
     
+
+
