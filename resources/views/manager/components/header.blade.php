@@ -180,7 +180,7 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default jello">
                         <li>
-                            <a href="user_profile.html">
+                            <a href="{{route('user.profile')}}">
                                 <i class="icon-user"></i> Profile </a>
                         </li>
                         {{-- <li>

@@ -41,13 +41,13 @@
 					</a>
 				</li>
 	            <li class="nav-item">
-	                <a href="#" class="nav-link nav-toggle">
+	                <a href="{{route('manager.book.index')}}" class="nav-link nav-toggle">
 	                    <i class="material-icons">book</i>
 	                    <span class="title">{{__('btn.book-manage')}}</span>
-	                    <span class="arrow"></span>
+	                    {{-- <span class="arrow"></span> --}}
 	                    <!--<span class="label label-rouded label-menu label-danger">new</span>-->
 	                </a>
-	                <ul class="sub-menu">
+	                {{-- <ul class="sub-menu">
 	                    <li class="nav-item">
 	                        <a href="{{route('manager.book.index')}}" class="nav-link ">
 	                            <span class="title">View List Books</span>
@@ -63,25 +63,25 @@
 	                            <span class="title">Statistics</span>
 	                        </a>
 	                    </li>
-	                </ul>
+	                </ul> --}}
 	            </li>
 
 	            <li class="nav-item">
-	                <a href="#" class="nav-link nav-toggle">
+	                <a href="{{ route('manager.order.list') }}" class="nav-link nav-toggle">
 	                    <i class="material-icons">shopping_cart</i>
-	                    <span class="title">Order</span>
-	                    <span class="arrow"></span>
+	                    <span class="title">Quản lý đơn hàng</span>
+	                    {{-- <span class="arrow"></span> --}}
 	                </a>
-	                <ul class="sub-menu">
+	                {{-- <ul class="sub-menu">
 	                    <li class="nav-item">
 	                        <a href="{{ route('manager.order.list') }}" class="nav-link ">
 	                            <span class="title">List Orders</span>
 	                        </a>
 	                    </li>
-	                </ul>
+	                </ul> --}}
 	            </li>
 
-	            <li class="nav-item">
+	            {{-- <li class="nav-item">
 	                <a href="#" class="nav-link nav-toggle">
 	                    <i class="material-icons">face</i>
 	                    <span class="title">User</span>
@@ -94,7 +94,7 @@
 	                        </a>
 	                    </li>
 	                </ul>
-	            </li>
+	            </li> --}}
 	            <li class="nav-item">
 	                <a href="#" class="nav-link nav-toggle">
 	                    <i class="material-icons">assessment</i>
@@ -103,17 +103,17 @@
 	                </a>
 	                <ul class="sub-menu">
 	                    <li class="nav-item">
-	                        <a href="add_room.html" class="nav-link ">
-	                            <span class="title">Receipts</span>
+	                        <a href="{{route('manager.report.revenue')}}" class="nav-link ">
+	                            <span class="title">Revenue</span>
 	                        </a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a href="all_rooms.html" class="nav-link ">
+	                        <a href="{{route('manager.report.profit')}}" class="nav-link ">
 	                            <span class="title">Profits</span>
 	                        </a>
 	                    </li>
 	                    <li class="nav-item">
-	                        <a href="edit_room.html" class="nav-link ">
+	                        <a href="{{route('manager.report.inventory')}}" class="nav-link ">
 	                            <span class="title">Inventory</span>
 	                        </a>
 	                    </li>
