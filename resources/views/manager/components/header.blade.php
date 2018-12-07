@@ -2,7 +2,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="/">
             <img alt="" src="{{ asset('assets/img/logo.png') }}">
             <span class="logo-default">Bookstore</span> </a>
         </div>

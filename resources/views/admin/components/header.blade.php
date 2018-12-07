@@ -2,7 +2,7 @@
     <div class="page-header-inner ">
         <!-- logo start -->
         <div class="page-logo">
-            <a href="index.html">
+            <a href="/">
             <img alt="" src="{{ asset('assets/img/logo.png') }}">
             <span class="logo-default">Bookstore</span> </a>
         </div>
@@ -29,7 +29,7 @@
         <!-- start header menu -->
         <div class="top-menu">
             <ul class="nav navbar-nav pull-right">
-                <!-- start notification dropdown -->
+               {{--  <!-- start notification dropdown -->
                 <li class="dropdown dropdown-extended dropdown-notification" id="header_notification_bar">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
                         <i class="fa fa-bell-o"></i>
@@ -170,20 +170,20 @@
                         </li>
                     </ul>
                 </li>
-                <!-- end message dropdown -->
+                <!-- end message dropdown --> --}}
                 <!-- start manage user dropdown -->
                 <li class="dropdown dropdown-user">
                     <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                        <img alt="" class="img-circle " src="{{ asset('assets/img/dp.jpg') }}" />
+                        <img alt="" class="img-circle " src="{{ asset('img/avatars').'/'.Auth::user()->avatar }}" />
                         <span class="username username-hide-on-mobile"> {{ Auth::user()->username }} </span>
                         <i class="fa fa-angle-down"></i>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-default jello">
                         <li>
-                            <a href="user_profile.html">
+                            <a href="{{route('user.profile')}}">
                                 <i class="icon-user"></i> Profile </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="#">
                                 <i class="icon-settings"></i> Settings
                             </a>
@@ -198,7 +198,7 @@
                             <a href="lock_screen.html">
                                 <i class="icon-lock"></i> Lock
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
                             <a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form-header').submit();">
                                 <i class="icon-logout"></i> {{ __('Logout') }} 
