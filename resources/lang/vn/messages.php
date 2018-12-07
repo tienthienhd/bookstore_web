@@ -30,5 +30,6 @@ return [
 	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
 	'edit-order-successfully' => 'Cập nhật trạng thái đơn hàng thành công',
 	'update-permission-successfully' => 'Cập nhật quyền truy cập thành công!',
+	'no-report-found' => 'Không có thống kê nào!'
 ];
 ?>
