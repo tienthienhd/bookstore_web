@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\BookController;
 use App\Http\Requests\SearchFilterBookRequest;
 
@@ -42,10 +43,12 @@ class HomeController extends Controller
         }else{
             $books = $this->bookController->getListBooksForHomePage();
         }
+        $hotBooks = $this->bookController->getHotBooks();
         return view('home', [
             'books' => $books, 
             'refineCategory' => $refineCategory,
             'searchString' => $searchString,
+            'hotBooks' => $hotBooks,
         ]);
     }
 
@@ -65,7 +68,8 @@ class HomeController extends Controller
      */
     public function adminHome()
     {
-        return view('admin.home');
+        // return view('admin.home');
+        return redirect('/admin/user/account-list');
     }
 
     /**

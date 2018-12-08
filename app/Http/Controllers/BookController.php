@@ -9,9 +9,16 @@ use App\Http\Requests\OldBookRequest;
 use App\Http\Requests\EditBookRequest;
 use App\Http\Requests\SearchBookRequest;
 use DateTime;
+use App\Http\Controllers\OrderDetailController;
+use App\Http\Controllers\CommentController;
 
 class BookController extends Controller
 {
+    public function __construct(){
+        $this->middleware('add-new-book-staff')->only(['addNewBook','updateBook', 'stopSaleBook']);
+        $this->middleware('add-old-book-staff')->only('addOldBook');
+    }
+
     /**
      * 
      * @return mix
@@ -57,7 +64,16 @@ class BookController extends Controller
      */
     public function getBookDetail(Book $book){
         $star = $book->comments()->avg('star');
-        return view('books.show', ['book' => $book, 'star' => $star]);
+        $countComment = $book->comments()->count();
+        $commentController = new CommentController;
+        $comments = $commentController->getCommentsOfBook($book->id);
+        return view('books.show', 
+            [
+                'book' => $book,
+                'star' => $star, 
+                'countComment' => $countComment,
+                'comments' => $comments,
+             ]);
 
     }
 
@@ -243,7 +259,7 @@ class BookController extends Controller
 
         $book->save();
 
-        return redirect()->route('book.show', ['book' => $book])
+        return redirect()->route('manager.book.show', ['book' => $book])
             ->with(
                 'status',
                  __(
@@ -292,4 +308,15 @@ class BookController extends Controller
                 )
              );
     }
+
+    public function getHotBooks(){
+        $orderDetailController = new OrderDetailController;
+        $hotBooks = $orderDetailController->getHotBooks();
+        return $hotBooks;
+        // foreach ($hotBooks as $hotBook) {
+        //     print_r($hotBook->book->title);
+        //     print_r($hotBook->sum);
+        //}
+    }
+
 }

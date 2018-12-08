@@ -163,12 +163,28 @@ return [
             'password' => 'Password',
             'confirm-password' => 'Confirm Password',
             'phone' => 'Phone number',
+            'avatar' => 'Avatar',
             'address' => 'Address'
+        ],
+        'comment' => [
+            'id' => 'ID',
+            'book_id' => 'Book ID',
+            'user_id' => 'User ID',
+            'title' => 'Title',
+            'description' => 'Description',
+            'star' => 'Star',   
         ],
         'cart' => [
             'tittle' => 'Book title',
             'price' => 'Price',
             'quantity' => 'Quantity',
+        ],
+        'order' => [
+            'delivery' => 'Delivery',
+        ],
+        'change-password' => [
+            'new-password' => 'New password',
+            'confirm-new-password' => 'Confirm new password',
         ],
     ],
 

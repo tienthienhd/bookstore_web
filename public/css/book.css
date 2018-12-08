@@ -1,0 +1,152 @@
+.book-info {
+    margin: 0;
+    border: 1px solid #e3e3e3;
+    padding: 5em 1em 3em 1em ;
+    background-color: #ffffff;
+}
+.book-info img {
+    width: 90%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+main {
+    margin: 0;
+    padding: 2em;
+    background-color: #f5f1ed;
+}
+
+.checked {
+    color: orange;
+}
+.star-rated i{
+    margin-top: 0.3em;
+    font-size: 14pt;
+}
+.star-rated span {
+    color: #1f6fb2;
+    position: relative;
+    top: -3px;
+}
+.book-info table {
+    margin-top: 1em;
+}
+.book-info th {
+    padding: 0.3em 1em 0.3em 0.3em;
+}
+
+.add-to-cart {
+    margin-top: 1em;
+    background-color: firebrick;
+    border: none;
+    border-radius: 3px;
+    padding: 0.4em 1em 0.2em 1em;
+}
+.add-to-cart i {
+    color: #ffffff;
+}
+.add-to-cart span {
+    color: #ffffff;
+    position: relative;
+    top: -5px;
+    padding-left: 0.5em;
+}
+.book-description {
+    margin-top: 1em;
+    background-color: #ffffff;
+    padding: 2em;
+}
+.price {
+    font-size: 18pt;
+    font-weight: bold;
+    color: red;
+}
+
+.review {
+    background-color: #ffffff;
+    padding: 2em;
+    margin-top: 1em;
+}
+.review-item {
+    padding: 1em;
+    width: 100%;
+    border-bottom: 1px solid #e3e3e3;
+}
+.review-item img {
+    width: 4em;
+    height: 4em;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    margin: auto;
+}
+.review-item h6 {
+    display: inline-block;
+    font-size: 14pt;
+    margin: 0.5em 1em 0.2em 0em;
+
+}
+.write-review {
+    background-color: #ffffff;
+    padding: 2em;
+}
+
+.write-review form {
+    width: 100%;
+}
+
+.rating {
+    float:left;
+}
+
+/* :not(:checked) is a filter, so that browsers that don’t support :checked don’t
+   follow these rules. Every browser that supports :checked also supports :not(), so
+   it doesn’t make the test unnecessarily selective */
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:200%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+    content: '★ ';
+}
+
+.rating > input:checked ~ label {
+    color: #f70;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: gold;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #ea0;
+    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}

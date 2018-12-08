@@ -7,15 +7,10 @@ use Illuminate\Http\Request;
 
 class OrderDetailController extends Controller
 {
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function addOrderDetail(Request $request)
+    
+    public function addOrderDetail($orderDetails)
     {
-        //
+        OrderDetail::insert($orderDetails);
     }
 
     /**
@@ -27,5 +22,18 @@ class OrderDetailController extends Controller
     public function getOrderDetail(OrderDetail $orderDetail)
     {
         //
+    }
+
+    /**
+     * getHotBooks description
+     * @return collection $hotBooks
+     */
+    public function getHotBooks(){
+        $hotBooks = OrderDetail::groupBy('book_id')
+            ->selectRaw('sum(quantity) as sum, book_id')->get();
+        $hotBooks = $hotBooks->sortByDesc('sum');
+        $hotBooks = $hotBooks->slice(0, 10);
+        $hotBooks->all();
+        return $hotBooks;
     }
 }

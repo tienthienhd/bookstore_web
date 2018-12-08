@@ -13,7 +13,7 @@ class CommentRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,23 @@ class CommentRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            //
+         return [
+            'title' => 'required|string|max:255',
+           
+            'description' => 'required|string',
+           
+            'star' => 'required|integer|min:0|max:5',
+            
         ];
     }
+    public function attributes(){
+        return [
+            'title' => __('validation.attributes.comment.title'),
+           
+            'description' => __('validation.attributes.comment.description'),
+            'star' => __('validation.attributes.comment.star'),
+            
+        ];
+    }
+    
 }

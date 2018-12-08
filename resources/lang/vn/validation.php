@@ -161,12 +161,28 @@ return [
             'password' => 'Mật khẩu',
             'confirm-password' => 'Nhập lại mật khẩu',
             'phone' => 'Số điện thoại',
+            'avatar' => 'Ảnh đại diện',
             'address' => 'Địa chỉ'
+        ],
+         'comment' => [
+            'id' => 'Mã định danh',
+            'book_id' => 'Mã sách',
+            'user_id' => 'Mã khách hàng',
+            'title' => 'Tiêu đề đánh giá',
+            'description' => 'Nội dung đánh giá',
+            'star' => 'Số sao',   
         ],
         'cart' => [
             'tittle' => 'Tên sách',
             'price' => 'Giá',
             'quantity' => 'Số lượng',
+        ],
+        'order' => [
+            'delivery' => 'Hình thức giao hàng',
+        ],
+        'change-password' => [
+            'new-password' => 'Mật khẩu mới',
+            'confirm-new-password' => 'Nhập lại mật khẩu mới',
         ],
     ],
 ];
