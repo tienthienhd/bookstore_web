@@ -41,7 +41,7 @@ return [
 
         'mysql' => [
             'driver' => 'mysql',
-            'host' => env('DB_HOST', '127.0.0.1'),
+            'host' => env('DB_HOST', 'ec2-54-197-249-140.compute-1.amazonaws.com'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
@@ -53,7 +53,10 @@ return [
             'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
+            'options'   => [PDO::ATTR_EMULATE_PREPARES => true],
         ],
+
+
 
         'pgsql' => [
             'driver' => 'pgsql',
