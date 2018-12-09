@@ -9,10 +9,15 @@
     padding: 1em;
     border-bottom: 1px solid #e3e3e3;
 }
+.sidebar li a:hover {
+    background-color: #1f6fb2;
+    color: #f7f7f7;
+}
 .sidebar li:hover {
     background-color: #1f6fb2;
     color: #f7f7f7;
 }
+
 .active {
     border-left: 4px solid #1f6fb2;
 }
