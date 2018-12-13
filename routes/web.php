@@ -66,7 +66,7 @@ Route::group(['middleware' => ['web', 'auth', 'customer']], function(){
 	Route::group(['prefix' => 'cart'], function(){
 		Route::post('/add', 'CartController@addToCart')->name('cart.add');
 		Route::get('/', 'CartController@showCart')->name('cart.index');
-		Route::delete('/{cart}', 'CartController@delete')->name('cart.destroy');
+		Route::delete('delete/{cart}', 'CartController@delete')->name('cart.destroy');
 		Route::put('/{cart}/update', 'CartController@updateQuantity')->name('cart.update-quantity');
 	});
 	Route::group(['prefix' => 'order'], function(){

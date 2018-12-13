@@ -20,8 +20,7 @@ class GetCountCartViewComposer
         $user = Auth::user();
         if($user){
             if($user->role_id == config('auth.roles.customer')){
-                $carts = Cart::where('user_id', $user->id)->get();
-                $count = count($carts);
+                $count = Cart::where('user_id', $user->id)->sum('quantity');
                 $view->with('countCart', $count);
             }
         }
