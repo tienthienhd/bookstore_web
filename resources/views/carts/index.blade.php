@@ -33,35 +33,34 @@
                     <hr>
                     @foreach($carts as $cart)
                         <div class="item">
-                            <form id='updateQuantity{{$cart->id}}'
-                                  action="{{route('cart.update-quantity', ['cart' => $cart])}}"
-                                  method='post'>
-                                @csrf
-                                @method('put')
-                                <div class="row">
-                                    <div class="col-sm-3">
-                                        <img src="{{asset('img/covers/'.$cart->book->cover)}}">
-                                    </div>
-                                    <div class="col-sm-9">
-                                        <span>{{__('validation.attributes.cart.tittle')}}:{{$cart->book->title}}</span><br>
-                                        <span class="price">{{__('word-and-statement.price', ['price' => number_format($cart->book->saleprice, 0, '.', '.')])}}</span><br><br>
-                                        <div class="group-button">
+                            <div class="row">
+                                <div class="col-sm-3">
+                                    <img src="{{asset('img/covers/'.$cart->book->cover)}}">
+                                </div>
+                                <div class="col-sm-9">
+                                    <span>{{__('validation.attributes.cart.tittle')}}:{{$cart->book->title}}</span><br>
+                                    <span class="price">{{__('word-and-statement.price', ['price' => number_format($cart->book->saleprice, 0, '.', '.')])}}</span><br><br>
+                                    <div class="row" style="float: right; margin-right: 25px;">
+                                        <form id='updateQuantity{{$cart->id}}'
+                                            action="{{route('cart.update-quantity', ['cart' => $cart])}}"
+                                            method='post'>
+                                            @csrf
+                                            @method('put')
                                             <input type="button" name="minusOne" value="-" onclick="myMinusFunction({{$cart->id}})">
-                                            <input type="number" name="quantity" id='quantity{{$cart->id}}' value="{{$cart->quantity}}"
-                                                   onfocusout="myFunction({{$cart->id}})">
+                                            <input type="number" style="max-width: 40px" name="quantity" id='quantity{{$cart->id}}' value="{{$cart->quantity}}"
+                                               onfocusout="myFunction({{$cart->id}})">
                                             <input type="button" name="addOne" value="+" onclick="myAddFunction({{$cart->id}})">
-                                            <form action="{{route('cart.destroy', ['cart' => $cart])}}" method="post">
-                                                @csrf
-                                                @method('delete')
-                                                <input type="submit" class="material-icons" name="delete" value="delete">
-                                            </form>
-                                        </div>
-
+                                        </form>
+                                    
+                                        <form action="{{route('cart.destroy', ['cart' => $cart])}}" method="post">
+                                            @csrf
+                                            @method('delete')
+                                            <input type="submit" style="margin-left: 5px" class="material-icons" name="delete" value="delete">
+                                        </form>  
                                     </div>
                                 </div>
+                            </div>
 
-
-                            </form>
                             <script>
                                 function myFunction(i) {
                                     document.getElementById("updateQuantity" + i).submit();
