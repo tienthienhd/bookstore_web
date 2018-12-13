@@ -28,11 +28,11 @@
                     <label  class="col-sm-2 col-form-label">Đánh giá của bạn</label>
                     <div class="col-sm-10">
                         <fieldset class="rating">
-                            <input type="radio" id="star5" name="star" value="5" /><label for="star5" title="Rocks!">5 stars</label>
-                            <input type="radio" id="star4" name="star" value="4" /><label for="star4" title="Pretty good">4 stars</label>
-                            <input type="radio" id="star3" name="star" value="3" /><label for="star3" title="Meh">3 stars</label>
-                            <input type="radio" id="star2" name="star" value="2" /><label for="star2" title="Kinda bad">2 stars</label>
-                            <input type="radio" id="star1" name="star" value="1" /><label for="star1" title="Sucks big time">1 star</label>
+                            <input type="radio" id="star5" name="star" value="5" {{old('star') == 5? 'checked':''}}/><label for="star5" title="Rocks!">5 stars</label>
+                            <input type="radio" id="star4" name="star" value="4" {{old('star') == 4? 'checked':''}}/><label for="star4" title="Pretty good">4 stars</label>
+                            <input type="radio" id="star3" name="star" value="3" {{old('star') == 3? 'checked':''}}/><label for="star3" title="Meh">3 stars</label>
+                            <input type="radio" id="star2" name="star" value="2" {{old('star') == 2? 'checked':''}}/><label for="star2" title="Kinda bad">2 stars</label>
+                            <input type="radio" id="star1" name="star" value="1" {{old('star') == 1? 'checked':''}}/><label for="star1" title="Sucks big time">1 star</label>
                         </fieldset>
                     </div>
                 </div>

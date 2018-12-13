@@ -30,6 +30,7 @@ return [
 	'create-staff-account-successfully' => 'Create staff account for :account successfully!',
 	'edit-order-successfully' => 'Update order state successfully',
 	'update-permission-successfully' => 'Update permission successfully!',
+	'delete-comment-successfully' => 'Your comment which id: :id have been delete!',
 ];
 ?>
 <?php
