@@ -84,7 +84,7 @@ class CartController extends Controller
      * @param  \App\Models\Cart  $cart
      * @return \Illuminate\Http\Response
      */
-    public function delete(Cart $cart)
+    public function delete(Request $request, Cart $cart)
     {
         $cart->delete();
         return redirect()->back()->with('status', __('messages.delete-cart-successfully', ['title' => $cart->book->title]));

@@ -74,12 +74,7 @@
 
                 <!-- Right Side Of Navbar -->
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a>
-                            <i class="material-icons">track_changes</i>
-                            <span>Theo dõi đơn hàng</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="{{route('cart.index')}}">
                             <i class="material-icons">shopping_cart</i>

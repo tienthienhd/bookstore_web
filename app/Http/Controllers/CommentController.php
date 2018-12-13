@@ -121,7 +121,7 @@ class CommentController extends Controller
         $comment->star = $request->star;
 
         $comment->save();
-       return redirect()->route('customer.comment.index')
+       return redirect()->route('customer.commentdetail', ['comment_id' => $comment->id])
             ->with(
                 'status',
                  __(
@@ -140,7 +140,13 @@ class CommentController extends Controller
     public function deleteComment(int $commentId)
     {
         Comment::destroy($commentId);
-       return redirect()->route('customer.comment.index');
+       return redirect()->route('customer.comment.index')->with(
+                'status',
+                 __(
+                    'messages.delete-comment-successfully',
+                    ['id' => $commentId]
+                )
+             );;
     }
 
     /**
