@@ -20,7 +20,6 @@ class IsOwner
         foreach ($requestParameters as $requestParameter) {
             // Loop through route parameters
             if (gettype($requestParameter) === "object") {
-                //print_r($requestParameter);exit();
                 // Route Model Binding is active for this parameter
                 if (isset($requestParameter->user_id)) { //for OrderController
                     // Model has an owner (column user_id is set)

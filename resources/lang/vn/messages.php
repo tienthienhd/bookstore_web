@@ -30,6 +30,7 @@ return [
 	'create-staff-account-successfully' => 'Tạo tài khoản cho nhân viên :account thành công!',
 	'edit-order-successfully' => 'Cập nhật trạng thái đơn hàng thành công',
 	'update-permission-successfully' => 'Cập nhật quyền truy cập thành công!',
-	'no-report-found' => 'Không có thống kê nào!'
+	'no-report-found' => 'Không có thống kê nào!',
+	'delete-comment-successfully' => 'Đánh giá có mã định danh: :id của bạn đã được xóa!',
 ];
 ?>
