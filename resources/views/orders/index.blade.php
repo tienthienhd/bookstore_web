@@ -11,19 +11,16 @@
                 <nav class="sidebar">
                     <ul>
                         <li>
-                            <a>Thông tin cá nhân</a>
-                        </li>
-                        <li>
-                            <a>Theo dõi đơn hàng</a>
+                            <a href="{{route('user.profile')}}" >Thông tin cá nhân</a>
                         </li>
                         <li class="active">
-                            <a>Lịch sử mua hàng</a>
+                            <a href="{{route('order.index')}}">Lịch sử mua hàng</a>
                         </li>
                         <li>
-                            <a>Danh sách chờ đánh giá</a>
+                            <a href="{{route('customer.waitcommentlist')}}">Danh sách chờ đánh giá</a>
                         </li>
                         <li style="border: none">
-                            <a>Danh sách đã đánh giá</a>
+                            <a href="{{route('customer.comment.index')}}">Danh sách đã đánh giá</a>
                         </li>
                     </ul>
 
