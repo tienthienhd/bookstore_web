@@ -107,6 +107,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('user.profile')}}">Thông tin cá nhân</a>
                             <a class="dropdown-item" href="{{route('order.index')}}" title="">
                                 {{__('btn.order-history')}}
                             </a>
