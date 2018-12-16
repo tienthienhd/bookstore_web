@@ -37,8 +37,6 @@
                         </tr>
                         </thead>
                         @foreach($orderStateHistories as $orderStateHistory)
-
-
                             <tr>
                                 <td></td>
                                 <td>{{__('order-state.description.'.$orderStateHistory->description)}}</td>

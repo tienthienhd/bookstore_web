@@ -3,3 +3,4 @@
 /.vagrant
 /node_modules
 bookstore_web.zip
+*.zip
