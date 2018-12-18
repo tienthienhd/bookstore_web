@@ -1,11 +1,14 @@
-@extends('layouts.app')
+@extends(Auth::user()->role_id == config('auth.roles.customer')?'layouts.app':'admin.layouts.master')
 
 @section('cssFile')
+    @if(Auth::user()->role_id == config('auth.roles.customer'))
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/mycss.css')}}">
+    @endif
 @endsection
 @section('content')
     <div class="container" style="margin-top: 2em">
+        @if(Auth::user()->role_id == config('auth.roles.customer'))
         <div class="row">
             <div class="col-md-4">
                 <nav class="sidebar">
@@ -27,6 +30,7 @@
                 </nav>
 
             </div>
+            @endif
             <div class="col-md-8">
                 @if ($errors->any())
                     <div class="alert alert-danger">
