@@ -155,7 +155,7 @@ class UserController extends Controller
             $avatarFile = $request->avatar;
             $avatar = ((new DateTime)->getTimestamp())
                 .'_'.rand().'.'.$avatarFile->getClientOriginalExtension();
-            $destinationPath = public_path('/img/avatars');
+            $destinationPath = storage_path('app/public/img/avatars');
 
             //  Save avatar image
             $avatarFile->move($destinationPath, $avatar);
