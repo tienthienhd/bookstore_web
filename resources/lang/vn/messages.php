@@ -11,6 +11,7 @@ return [
 	'select-a-category' => 'Chọn một thể loại sách',
 	'no-book-found' => 'Không có cuốn sách nào',
 	'over-quantity' => 'Vượt quá số lượng sách còn trong kho, chúng tôi chỉ còn :quantity cuốn :title!',
+	'under-limit-quantity' => 'Dưới số lượng cho phép!',
 	'add-to-cart-successfully' => 'Thêm sách vào giỏ thành công!',
 	'blank-cart' => 'Giỏ hàng trống!',
 	'update-cart-quantity-successfully' => 'Cập nhật số lượng cuốn :title trong giỏ thành công!',

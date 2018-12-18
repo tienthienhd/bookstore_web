@@ -67,6 +67,11 @@ class CartController extends Controller
      */
     public function updateQuantity(Request $request, Cart $cart)
     {
+        if($request->quantity < 1){
+            return redirect()->back()->withErrors([
+                'over-quantity'=> __('messages.under-limit-quantity')
+            ]);
+        }
         $cart->quantity = $request->quantity;
         if($cart->book->state < $cart->quantity){
             return redirect()->back()->withErrors([
