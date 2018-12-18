@@ -35,7 +35,7 @@
                         <div class="item">
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <img src="{{asset('img/covers/'.$cart->book->cover)}}">
+                                    <img src="{{asset('storage/img/covers/'.$cart->book->cover)}}">
                                 </div>
                                 <div class="col-sm-9">
                                     <span>{{__('validation.attributes.cart.tittle')}}:{{$cart->book->title}}</span><br>

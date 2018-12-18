@@ -36,7 +36,7 @@
                             <span>Bao gồm: </span><br><br>
                             @foreach($order->orderDetails as $orderDetail)
                                 <div>
-                                    <img src="{{asset('img/covers/'.$orderDetail->book->cover)}}">
+                                    <img src="{{asset('storage/img/covers/'.$orderDetail->book->cover)}}">
                                     <span>{{$orderDetail->book->title}}</span>
                                 </div>
                             @endforeach

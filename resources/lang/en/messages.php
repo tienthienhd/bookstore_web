@@ -11,6 +11,7 @@ return [
 	'select-a-category' => 'Select a category',
 	'no-book-found' => 'No book found',
 	'over-quantity' => 'Your book quantity that you would like to add to cart is over our overbalance, we only have :quantity book(s) :title!',
+	'under-limit-quantity' => 'Under limit quantity!',
 	'add-to-cart-successfully' => 'Add book to cart successfully!',
 	'blank-cart' => 'Your cart is empty!',
 	'update-cart-quantity-successfully' => 'Update quantity of :title in cart successfully!',
