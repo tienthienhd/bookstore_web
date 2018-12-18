@@ -64,7 +64,7 @@
 
                         <div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
                             <label>Cover</label><br>
-                            <img src="{{ asset("img/covers/" . $book->cover) }}" width="80%">
+                            <img src="{{ asset("storage/img/covers/" . $book->cover) }}" width="80%">
                         </div>
                         <div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
                             <label>Description</label><br>

@@ -11,7 +11,7 @@
 	                <div class="user-panel">
 	                    <div class="row">
                             <div class="sidebar-userpic">
-                                <img src="{{ asset('img/avatars').'/'.Auth::user()->avatar }}" class="img-responsive" alt=""> </div>
+                                <img src="{{ asset('storage/img/avatars').'/'.Auth::user()->avatar }}" class="img-responsive" alt=""> </div>
                         </div>
                         <div class="profile-usertitle">
                             <div class="sidebar-userpic-name"> {{Auth::user()->username}} </div>

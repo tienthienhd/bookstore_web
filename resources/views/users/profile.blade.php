@@ -1,10 +1,8 @@
-@extends(Auth::user()->role_id == config('auth.roles.customer')?'layouts.app':'admin.layouts.master')
+@extends(Auth::user()->role_id == config('auth.roles.customer')?'layouts.app':(Auth::user()->role_id == config('auth.roles.admin')?'admin.layouts.master':'manager.layouts.master'))
 
 @section('cssFile')
-    @if(Auth::user()->role_id == config('auth.roles.customer'))
     <link href="{{ asset('css/sidebar.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/mycss.css')}}">
-    @endif
 @endsection
 @section('content')
     <div class="container" style="margin-top: 2em">
@@ -140,7 +138,7 @@
                                class="col-md-4 col-form-label text-md-right">{{__('validation.attributes.user.avatar')}}
                             :</label>
 
-                        <div id="imgCover" style="background-image: url('{{asset('/img/avatars/'.$user->avatar)}}');"
+                        <div id="imgCover" style="background-image: url('{{asset('storage/img/avatars/'.$user->avatar)}}');"
                              class="img-thumbnail custom_cover col-md-8" alt="Avatar">
                             <div class="custom_cover_imgae_space"></div>
                             <div class=" row justify-content-center custom_link_upload_cover">

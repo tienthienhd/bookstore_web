@@ -142,7 +142,7 @@ class BookController extends Controller
         $coverFile = $request->cover;
         $cover = ((new DateTime)->getTimestamp())
             .'_'.rand().'.'.$coverFile->getClientOriginalExtension();
-        $destinationPath = public_path('/img/covers');
+        $destinationPath = storage_path('app/public/img/covers');
 
         //  Save cover image
         $coverFile->move($destinationPath, $cover);

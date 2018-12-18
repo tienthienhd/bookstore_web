@@ -51,7 +51,7 @@
                                     <a class="customer-link" href="{{ route('book.show', ['book' => $book]) }}">
                                         <table>
                                             <tr>
-                                                <td><img src="{{asset("img/covers/" . $book->cover)}}"></td>
+                                                <td><img src="{{asset("storage/img/covers/" . $book->cover)}}"></td>
                                                 <td>
                                                     <h6>{{$book->title}}</h6>
                                                     <span style="color: red">{{__('word-and-statement.price', ['price' => number_format($book->saleprice, 0, '.', '.')])}}</span>
@@ -84,7 +84,7 @@
                                     <a class="customer-link" href="{{ route('book.show', ['book' => $hotBook->book]) }}">
                                         <table>
                                             <tr>
-                                                <td><img src="{{asset("img/covers/" . $hotBook->book->cover)}}"></td>
+                                                <td><img src="{{asset("storage/img/covers/" . $hotBook->book->cover)}}"></td>
                                                 <td>
                                                     <h6>{{$hotBook->book->title}}</h6>
                                                     <span style="color: red">{{__('word-and-statement.price', ['price' => number_format($hotBook->book->saleprice, 0, '.', '.')])}}</span>

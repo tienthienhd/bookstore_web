@@ -23,7 +23,7 @@
         <div class="container">
             <div class="row book-info">
                 <div class="col-md-4">
-                    <img src="{{asset("img/covers/" . $book->cover)}}">
+                    <img src="{{asset("storage/img/covers/" . $book->cover)}}">
                 </div>
                 <div class="col-md-8">
                     <h4>{{$book->title}}</h4>
