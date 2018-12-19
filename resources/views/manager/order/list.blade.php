@@ -110,7 +110,7 @@
                         <table class="table table-hover table-checkable order-column full-width" id="example4">
                             <thead>
                                 <tr>
-                                	<th class="center">Mã đơn hàng</th>
+                                	<th class="center" style="min-width: 120px">Mã đơn hàng</th>
 				    				<th class="center">Tên khách hàng</th>
 				    				<th class="center">Ngày đặt</th>
 				    				<th class="center">Bao gồm</th>
