@@ -37,7 +37,7 @@
                                     </a>
                                 </div>
                             </div>
-                            <div class="col-md-6 col-sm-6 col-6">
+                            {{-- <div class="col-md-6 col-sm-6 col-6">
                                 <div class="btn-group pull-right">
                                     <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
                                         <i class="fa fa-angle-down"></i>
@@ -57,7 +57,7 @@
                                         </li>
                                     </ul>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         @if (isset($errorMessage))
 					        <div class="alert alert-danger">
