@@ -18,7 +18,7 @@ return [
 	'delete-cart-successfully' => 'Xóa cuốn sách :title khỏi giỏ hàng thành công!',
 	'add-order-successfully' => 'Đặt hàng thành công!',
 	'select-a-delivery' => 'Chọn một hình thức giao hàng',
-	'no-order-found' => 'Bạn chưa có đơn hàng nào!',
+	'no-order-found' => 'Không có đơn hàng nào!',
 	'no-data' => 'Không có dữ liệu!',
 	'cancel-order-successfully' => 'Hủy đơn hàng thành công!',
 	'cant-cancel-order' => 'Bạn không thể hủy đơn hàng này! :description',
