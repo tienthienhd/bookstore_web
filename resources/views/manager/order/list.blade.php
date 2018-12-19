@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="card-body ">
-                        
+
                         @if (isset($errorMessage))
 					        <div class="alert alert-danger">
 					            <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('Close') }}">
