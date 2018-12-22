@@ -138,7 +138,8 @@
 											@elseif ($book->state == 0 )
 												<span class="label label-sm label-warning">{{$book->state}}</span>
 											@else
-												<span class="label label-sm label-danger">{{$book->state}}</span>
+												<span class="label label-sm label-danger"><i class="fa fa-ban" title="Ngừng kinh doanh"></i>
+</span>
 											@endif
 										</td>
 										<td class="center">
