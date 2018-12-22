@@ -66,9 +66,9 @@
                     </div>
                     <div class="card-body ">
                         <div class="row p-b-20">
-                        	<div class="col-md-6 col-sm-6 col-6">
-                        		
-                        	</div>
+                            <div class="col-md-6 col-sm-6 col-6">
+
+                            </div>
                             {{-- <div class="col-md-6 col-sm-6 col-6">
                                 <div class="btn-group pull-right">
                                     <a class="btn deepPink-bgcolor  btn-outline dropdown-toggle" data-toggle="dropdown">Tools
@@ -91,6 +91,7 @@
                                 </div>
                             </div> --}}
                         </div>
+                        
                         @if (isset($errorMessage))
 					        <div class="alert alert-danger">
 					            <button type="button" class="close" data-dismiss="alert" aria-label="{{ __('Close') }}">
@@ -135,7 +136,7 @@
                         <table class="table table-hover table-checkable order-column full-width" id="example4">
                             <thead>
                                 <tr>
-                                	<th class="center">Mã đơn hàng</th>
+                                	<th class="center" style="min-width: 120px">Mã đơn hàng</th>
 				    				<th class="center">Tên khách hàng</th>
 				    				<th class="center">Ngày đặt</th>
 				    				<th class="center">Bao gồm</th>

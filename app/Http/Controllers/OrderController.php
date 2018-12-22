@@ -182,19 +182,21 @@ class OrderController extends Controller
         
         $orders = Order::WhereIn('user_id', function($q) use ($keyName){
             $q->select('id')->from('users')->where('fullname','like', '%' . $keyName . '%');
-        })->get();
+        })->paginate();;
         }
         if($keyPhone != ''){
         
         $orders = Order::WhereIn('user_id', function($q) use ($keyPhone){
             $q->select('id')->from('users')->where('phone','=',$keyPhone);
-        })->get();
+        })->paginate();;
         }
        
         
         return view('manager.order.list')->with([
             'orders' => $orders,
-          
+            'searchName' => $keyName,
+            'searchId' => $keyId,
+            'searchPhone' => $keyPhone,
            
         ]);
 
