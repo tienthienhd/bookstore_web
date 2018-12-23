@@ -89,7 +89,7 @@
             <div class="col-md-12">
                 <div class="card card-box">
                     <div class="card-head">
-                        <header>List Account</header>
+                        <header>Danh sách tài khoản</header>
                         <div class="tools">
                             <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                             <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -125,12 +125,12 @@
 	                        	<table class="table table-hover table-checkable order-column full-width" id="example4">
 		                            <thead>
 		                                <tr>
-		                                	<th class="center">Username</th>
-											<th class="center">Fullname</th>
+		                                	<th class="center">Tên tài khoản</th>
+											<th class="center">Họ tên</th>
 											<th class="center">Email</th>
-											<th class="center">Phone</th>
-											<th class="center">Role</th>
-						    				<th class="center"> <a href="#"> Action </a></th>
+											<th class="center">Số điện thoại</th>
+											<th class="center">Vai trò</th>
+						    				<th class="center"> Hành động</th>
 		                                </tr>
 		                            </thead>
 		                            <tbody>
@@ -174,11 +174,11 @@
 							@csrf
 							
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Username</label>
+								<label>Tên tài khoản</label>
 								<input class="mdl-textfield__input" type="text" name="username">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Fullname</label>
+								<label>Họ tên</label>
 								<input class="mdl-textfield__input" type="text" name="fullname">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
@@ -187,26 +187,26 @@
 								{{-- <span class = "mdl-textfield__error">Enter Valid Email Address!</span> --}}
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Phone</label>
+								<label>Số điện thoại</label>
 								<input class="mdl-textfield__input" type="text" name="phone">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Address</label>
+								<label>Địa chỉ</label>
 								<input class="mdl-textfield__input" type="text" name="address">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Password</label>
+								<label>Mật khẩu</label>
 								<input class="mdl-textfield__input" type="password" name="password">
 							</div>
 							<div class="col-md-6 col-sm-6 col-lg-6 p-t-20">
-								<label>Password-confirmation</label>
+								<label>Xác nhận mật khẩu</label>
 								<input class="mdl-textfield__input" type="password" name="password_confirmation">
 							</div>
 
 							<div class="col-lg-12 p-t-20 text-center">
-			                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="addAccount" value="Add Staff Account">
+			                    <input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="addAccount" value="Thêm tài khoản nhân viên">
 			                </div>
 						</form>
                     </div>

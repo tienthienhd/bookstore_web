@@ -89,7 +89,7 @@
             <div class="col-md-12">
                 <div class="card card-box">
                     <div class="card-head">
-                        <header>List Account</header>
+                        <header>Danh sách tài khoản</header>
                         <div class="tools">
                             <a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
                             <a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -98,13 +98,13 @@
                     </div>
                     <div class="card-body ">
                         <div class="row p-b-20">
-                            <div class="col-md-6 col-sm-6 col-6">
+                            {{-- <div class="col-md-6 col-sm-6 col-6">
                                 <div class="btn-group">
                                     <a href="#addAccount" id="addRow" class="btn btn-info">
                                         Add New <i class="fa fa-plus"></i>
                                     </a>
                                 </div>
-                            </div>
+                            </div> --}}
                         </div>
                         @if ($errors->any())
 					    <div class="alert alert-danger">
@@ -125,11 +125,11 @@
                         	<table class="table table-hover table-checkable order-column full-width" id="example4">
 	                            <thead>
 	                                <tr>
-	                                	<th class="center">Username</th>
-										<th class="center">Fullname</th>
+	                                	<th class="center">Tên tài khoản</th>
+										<th class="center">Họ tên</th>
 										<th class="center">Email</th>
-										<th class="center">Phone</th>
-										<th class="center">Permisstion</th>
+										<th class="center">Số điện thoại</th>
+										<th class="center">Quyền truy cập</th>
 					    				{{-- <th class="center"> <a href="#"> Action </a></th> --}}
 	                                </tr>
 	                            </thead>
@@ -168,7 +168,7 @@
 														</li>
 													</ul>
 												    </div>
-													<input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="updatePermission" value="Update Permission">
+													<input class="mdl-button m-b-10 m-r-20 btn-pink" type="submit" name="updatePermission" value="Cập nhật">
 												</form>
 											</td>
 										</tr>
