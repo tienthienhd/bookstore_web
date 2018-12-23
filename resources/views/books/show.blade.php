@@ -70,7 +70,7 @@
                         @foreach($comments as $comment)
                         <div class="row review-item">
                             <div class="col-md-2">
-                                <img src="{{asset("img/avatars/" . $comment->user->avatar)}}">
+                                <img src="{{asset("storage/img/avatars/" . $comment->user->avatar)}}">
                             </div>
                             <div class="col-md-7">
                                 <h6>{{$comment->user->username}}</h6>
